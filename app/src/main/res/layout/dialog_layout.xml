@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/material_background"
+        android:adjustViewBounds="true"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:minWidth="280dp"
+        android:minHeight="120dp"
+        android:maxHeight="300dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginRight="16dp"
+                android:textColor="#333333"
+                android:textSize="17sp"
+                tools:text="Material title"/>
+
+            <ScrollView
+                android:layout_weight="1"
+                android:id="@+id/message_content_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                tools:layout_height="700dp">
+
+                <LinearLayout
+                    android:id="@+id/message_content_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:id="@+id/message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingMultiplier="1.1"
+                        android:textColor="#666666"
+                        android:textSize="16sp"
+                        tools:text="message"/>
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/btn_n"
+                android:textColor="#2196f3"
+                android:layout_height="32dp"
+                android:layout_width="140dp"
+                android:stateListAnimator="@null"
+                android:textSize="14sp"
+                android:background="@drawable/bg_button_custom_dialog"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="start"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:layout_alignParentStart="true"
+                android:paddingStart="16dp"
+                tools:text="CANCEL"/>
+
+            <Button
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btn_p"
+                android:stateListAnimator="@null"
+                android:layout_height="32dp"
+                android:layout_width="140dp"
+                android:textColor="#2196f3"
+                android:textSize="14sp"
+                android:background="@drawable/bg_button_custom_dialog"
+                android:gravity="end|center_vertical"
+                android:layout_gravity="end"
+                android:maxLines="2"
+                android:paddingEnd="16dp"
+                android:ellipsize="end"
+                tools:text="OK" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

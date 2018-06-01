@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="#ffffff">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tab1"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/btn_showdialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示一个按钮对话框"
+        android:layout_gravity="bottom"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_showdialog2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示两个对话框"
+        android:layout_gravity="bottom"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_showdialog3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示没有title对话框"
+        android:layout_gravity="bottom"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_loadfragment"
+        android:text="更换当前fragment"/>
+
+</LinearLayout>
