@@ -3,19 +3,20 @@ package com.xbing.app.net.common.log;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.xbing.app.net.okhttp3.Headers;
+import com.xbing.app.net.okhttp3.Interceptor;
+import com.xbing.app.net.okhttp3.MediaType;
+import com.xbing.app.net.okhttp3.Request;
+import com.xbing.app.net.okhttp3.RequestBody;
+import com.xbing.app.net.okhttp3.Response;
+import com.xbing.app.net.okhttp3.ResponseBody;
+
 import java.io.IOException;
 
-import okhttp3.Headers;
-import okhttp3.Interceptor;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 import okio.Buffer;
 
 /**
- * Created by zhy on 16/3/1.
+ *
  */
 public class LoggerInterceptor implements Interceptor
 {
@@ -76,6 +77,7 @@ public class LoggerInterceptor implements Interceptor
                             Log.e(tag, "responseBody's content : " + resp);
 
                             body = ResponseBody.create(mediaType, resp);
+                            Log.e(tag, "========response'log=======end");
                             return response.newBuilder().body(body).build();
                         } else
                         {

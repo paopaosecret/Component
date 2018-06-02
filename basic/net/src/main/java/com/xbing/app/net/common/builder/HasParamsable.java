@@ -3,7 +3,7 @@ package com.xbing.app.net.common.builder;
 import java.util.Map;
 
 /**
- * Created by zhy on 16/3/1.
+ * Created by zhaobing 18/06/02.
  */
 public interface HasParamsable
 {

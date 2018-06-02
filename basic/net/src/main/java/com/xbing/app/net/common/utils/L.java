@@ -3,7 +3,7 @@ package com.xbing.app.net.common.utils;
 import android.util.Log;
 
 /**
- * Created by zhy on 15/11/6.
+ * Created by zhaobing  15/11/6.
  */
 public class L
 {

@@ -1,6 +1,7 @@
 package com.xbing.app.component.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.xbing.app.account.IAccountManager;
+import com.xbing.app.account.RequestCallback;
+import com.xbing.app.account.iml.AccountManagerIml;
+import com.xbing.app.account.result.RequestResult;
 import com.xbing.app.component.R;
+import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
 
 
@@ -23,6 +28,8 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     private final static String TAG = Tab1Fragment.class.getSimpleName();
 
     private FragmentManager mFragmentManager;
+
+    private IAccountManager mAccountManager;
 
     @Override
     public void onAttach(Context context) {
@@ -76,7 +83,9 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,TAG +"->onCreateView");
+
         mFragmentManager = getActivity().getSupportFragmentManager();
+        mAccountManager = new AccountManagerIml();
         View contentView = inflater.inflate(R.layout.tab1_fragment,container,false);
         contentView.findViewById(R.id.btn_showdialog).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +140,9 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
 
 
         contentView.findViewById(R.id.btn_loadfragment).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_test_http).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_exception).setOnClickListener(this);
+
 
         return  contentView;
 
@@ -148,6 +160,27 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
                         .addToBackStack(null)
                         .commit();
                 break;
+
+            case R.id.btn_test_http:
+                mAccountManager.getUsers(new RequestCallback() {
+                    @Override
+                    public void onRequestComplete(RequestResult result) {
+                        if(result != null){
+                            Log.d("http",result.toString()) ;
+                        }
+
+                    }
+                });
+                break;
+
+            case R.id.btn_go_to_exception:
+                gotoExceptionActivity();
+                break;
         }
+    }
+
+    private void gotoExceptionActivity() {
+        Intent intent = new Intent(getActivity(), ExceptionActivity.class);
+        startActivity(intent);
     }
 }

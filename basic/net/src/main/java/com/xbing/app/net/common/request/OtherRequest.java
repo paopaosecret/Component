@@ -4,19 +4,18 @@ import android.text.TextUtils;
 
 import com.xbing.app.net.common.OkHttpUtils;
 import com.xbing.app.net.common.utils.Exceptions;
+import com.xbing.app.net.okhttp3.MediaType;
+import com.xbing.app.net.okhttp3.Request;
+import com.xbing.app.net.okhttp3.RequestBody;
+import com.xbing.app.net.okhttp3.internal.http.HttpMethod;
 
 import java.util.Map;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.internal.http.HttpMethod;
-
 /**
- * Created by zhy on 16/2/23.
+ * Created by zhaobing  16/2/23.
  */
 public class OtherRequest extends OkHttpRequest
 {
-    private  MediaType mediaType;
+    private MediaType mediaType;
 
     private RequestBody requestBody;
     private String method;

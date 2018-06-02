@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.xbing.app.component"
         minSdkVersion 19
@@ -25,8 +25,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0'
     compile project(':business:account')
     testCompile 'junit:junit:4.12'
+
+    annotationProcessor project(path: ':annotation:lib-processor')
+    compile project(path: ':annotation:lib-annotation')
+    compile project(path: ':annotation:lib-api')
 
 }

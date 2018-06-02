@@ -2,9 +2,9 @@ package com.xbing.app.net.common.builder;
 
 import com.xbing.app.net.common.request.OtherRequest;
 import com.xbing.app.net.common.request.RequestCall;
+import com.xbing.app.net.okhttp3.MediaType;
+import com.xbing.app.net.okhttp3.RequestBody;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 /**
  * DELETE、PUT、PATCH等其他方法

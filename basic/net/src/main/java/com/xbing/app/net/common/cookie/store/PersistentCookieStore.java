@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.xbing.app.net.okhttp3.Cookie;
+import com.xbing.app.net.okhttp3.HttpUrl;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,9 +20,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import okhttp3.Cookie;
-import okhttp3.HttpUrl;
 
 /**
  * <pre>

@@ -1,0 +1,8 @@
+
+/**
+创建表sql
+*/
+CREATE TABLE IF NOT EXISTS tb_person (
+    tb_name     TEXT,
+    tb_password TEXT
+);

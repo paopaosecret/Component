@@ -2,11 +2,11 @@ package com.xbing.app.net.common.builder;
 
 import com.xbing.app.net.common.request.PostStringRequest;
 import com.xbing.app.net.common.request.RequestCall;
+import com.xbing.app.net.okhttp3.MediaType;
 
-import okhttp3.MediaType;
 
 /**
- * Created by zhy on 15/12/14.
+ * Created by zhaobing  15/12/14.
  */
 public class PostStringBuilder extends OkHttpRequestBuilder<PostStringBuilder>
 {

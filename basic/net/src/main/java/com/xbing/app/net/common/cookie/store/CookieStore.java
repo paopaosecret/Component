@@ -1,9 +1,10 @@
 package com.xbing.app.net.common.cookie.store;
 
+import com.xbing.app.net.okhttp3.Cookie;
+import com.xbing.app.net.okhttp3.HttpUrl;
+
 import java.util.List;
 
-import okhttp3.Cookie;
-import okhttp3.HttpUrl;
 
 public interface CookieStore
 {

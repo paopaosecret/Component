@@ -1,8 +1,9 @@
 package com.xbing.app.net.common.callback;
 
-import okhttp3.Call;
-import okhttp3.Request;
-import okhttp3.Response;
+
+import com.xbing.app.net.okhttp3.Call;
+import com.xbing.app.net.okhttp3.Request;
+import com.xbing.app.net.okhttp3.Response;
 
 public abstract class Callback<T>
 {

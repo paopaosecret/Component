@@ -1,10 +1,11 @@
 package com.xbing.app.net.common.callback;
 
+import com.xbing.app.net.okhttp3.Response;
+
 import java.io.IOException;
-import okhttp3.Response;
 
 /**
- * Created by zhy on 15/12/14.
+ * Created by zhaobing  15/12/14.
  */
 public abstract class StringCallback extends Callback<String>
 {

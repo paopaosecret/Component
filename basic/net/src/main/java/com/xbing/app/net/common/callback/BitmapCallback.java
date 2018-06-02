@@ -3,10 +3,10 @@ package com.xbing.app.net.common.callback;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import okhttp3.Response;
+import com.xbing.app.net.okhttp3.Response;
 
 /**
- * Created by zhy on 15/12/14.
+ * Created by zhaobing  15/12/14.
  */
 public abstract class BitmapCallback extends Callback<Bitmap>
 {

@@ -5,7 +5,7 @@ import com.xbing.app.net.common.request.OtherRequest;
 import com.xbing.app.net.common.request.RequestCall;
 
 /**
- * Created by zhy on 16/3/2.
+ * Created by zhaobing  16/3/2.
  */
 public class HeadBuilder extends GetBuilder
 {

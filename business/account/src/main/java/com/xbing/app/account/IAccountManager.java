@@ -29,4 +29,10 @@ public interface IAccountManager {
      */
     void setDefaultPatient(Long patientId, RequestCallback callback);
 
+    /**
+     * 获取用户信息
+     * @param callback
+     */
+    void getUsers(RequestCallback callback);
+
 }

@@ -2,14 +2,13 @@ package com.xbing.app.net.common.request;
 
 import com.xbing.app.net.common.callback.Callback;
 import com.xbing.app.net.common.utils.Exceptions;
+import com.xbing.app.net.okhttp3.Headers;
+import com.xbing.app.net.okhttp3.Request;
+import com.xbing.app.net.okhttp3.RequestBody;
 
 import java.util.Map;
-import okhttp3.Headers;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-
 /**
- * Created by zhy on 15/11/6.
+ * Created by zhaobing  15/11/6.
  */
 public abstract class OkHttpRequest
 {

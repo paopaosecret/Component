@@ -1,7 +1,7 @@
 package com.xbing.app.net.common.cookie.store;
 
 /**
- * Created by zhy on 16/3/10.
+ * Created by zhaobing 18/06/020.
  */
 public interface HasCookieStore
 {

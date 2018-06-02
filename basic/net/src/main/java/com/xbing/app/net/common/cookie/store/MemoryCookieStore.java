@@ -1,16 +1,17 @@
 package com.xbing.app.net.common.cookie.store;
 
+import com.xbing.app.net.okhttp3.Cookie;
+import com.xbing.app.net.okhttp3.HttpUrl;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import okhttp3.Cookie;
-import okhttp3.HttpUrl;
 
 /**
- * Created by zhy on 16/3/10.
+ * Created by zhaobing 18/06/020.
  */
 public class MemoryCookieStore implements CookieStore
 {

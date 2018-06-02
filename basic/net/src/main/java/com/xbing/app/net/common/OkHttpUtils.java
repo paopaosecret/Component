@@ -13,18 +13,17 @@ import com.xbing.app.net.common.https.HttpsUtils;
 import com.xbing.app.net.common.log.LoggerInterceptor;
 import com.xbing.app.net.common.request.RequestCall;
 import com.xbing.app.net.common.utils.Platform;
+import com.xbing.app.net.okhttp3.Call;
+import com.xbing.app.net.okhttp3.OkHttpClient;
+import com.xbing.app.net.okhttp3.Response;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Response;
-
 /**
- * Created by zhy on 15/8/17.
+ * Created by zhaobing  15/8/17.
  */
 public class OkHttpUtils
 {
@@ -57,7 +56,7 @@ public class OkHttpUtils
         })
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
-                .addInterceptor(new LoggerInterceptor("HTTP"))
+                .addInterceptor(new LoggerInterceptor("app_business_http_api",true))
                 .cookieJar(cookieJar1)
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .build();
@@ -144,7 +143,7 @@ public class OkHttpUtils
         final Callback finalCallback = callback;
         final int id = requestCall.getOkHttpRequest().getId();
 
-        requestCall.getCall().enqueue(new okhttp3.Callback()
+        requestCall.getCall().enqueue(new com.xbing.app.net.okhttp3.Callback()
         {
             @Override
             public void onFailure(Call call, final IOException e)

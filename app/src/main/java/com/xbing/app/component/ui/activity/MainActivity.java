@@ -11,6 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.api.InjectHelper;
+import com.example.lib_annotation.BindView;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.fragment.Tab1Fragment;
 import com.xbing.app.component.ui.fragment.Tab2Fragment;
@@ -29,14 +31,24 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
     private android.support.v4.app.FragmentManager mFragmentManager;
     private FrameLayout mViewGroup;
 
-    private View mRltab1,mRltab2,mRltab3;
+    @BindView(R.id.rl_tab1)
+    public View mRltab1;
+
+    @BindView(R.id.rl_tab2)
+    public View mRltab2;
+
+    @BindView(R.id.rl_tab3)
+    public View mRltab3;
+
     private ImageView mIVtab1,mIVtab2,mIVtab3;
-    private TextView mTVtab1,mTVtab2,mTVtab3;
+
+    public TextView mTVtab1,mTVtab2,mTVtab3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        InjectHelper.inject(this);
         setTitle("MainActivity");
         setRightTitle("Setting");
         setBackVisible(false);
@@ -137,9 +149,9 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
      *
      */
     private void initViews() {
-        mRltab1 = findViewById(R.id.rl_tab1);
-        mRltab2 = findViewById(R.id.rl_tab2);
-        mRltab3 = findViewById(R.id.rl_tab3);
+//        mRltab1 = findViewById(R.id.rl_tab1);
+//        mRltab2 = findViewById(R.id.rl_tab2);
+//        mRltab3 = findViewById(R.id.rl_tab3);
 
         mIVtab1 = (ImageView)findViewById(R.id.iv_tab1);
         mIVtab2 = (ImageView)findViewById(R.id.iv_tab2);

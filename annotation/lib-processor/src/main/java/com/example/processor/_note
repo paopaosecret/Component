@@ -1,0 +1,32 @@
+Element
+- VariableElement：代表变量
+- TypeElement：代表 class
+
+
+在编写此类框架的时候，一般需要建立多个module，例如本文即将实现的例子：
+
+lib-annotation 用于存放注解等，Java模块
+lib-processor 用于编写注解处理器，Java模块
+lib-api 用于给用户提供使用的API，本例为Andriod模块
+
+Class类：
+getSimepleName（）：返回类名
+getName();          返回虚拟机中类的表示
+getCanonicalName（） 返回全限定类名（包名+类名）
+
+区别如下：
+getName()
+数组类型返回：
+[B
+[Ljava.text.NumberFormat;
+内部类返回：
+com.example.lib_annotation.JavaTest$Inner
+
+getCanonicalName()：
+数组类型返回：
+byte[]
+java.text.NumberFormat[]
+内部类返回：
+com.example.lib_annotation.JavaTest.Inner
+
+普通类返回都一样
