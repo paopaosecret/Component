@@ -1,5 +1,6 @@
 package com.xbing.app.component.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.example.api.InjectHelper;
 import com.example.lib_annotation.BindView;
 import com.xbing.app.component.R;
+import com.xbing.app.component.ui.activity.layer2.SettingActivity;
 import com.xbing.app.component.ui.fragment.Tab1Fragment;
 import com.xbing.app.component.ui.fragment.Tab2Fragment;
 import com.xbing.app.component.ui.fragment.Tab3Fragment;
@@ -182,8 +184,16 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
             case R.id.rl_tab3:
                 setTabSelection(3);
                 break;
+            case R.id.tv_right:
+                gotoSettingActivity();
+                break;
         }
 
+    }
+
+    private void gotoSettingActivity() {
+        Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+        startActivity(intent);
     }
 
 

@@ -81,6 +81,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         TextView rightTitle = (TextView) findViewById(R.id.tv_right);
         if(rightTitle != null){
             rightTitle.setText(str);
+            rightTitle.setOnClickListener(this);
         }
     }
 
