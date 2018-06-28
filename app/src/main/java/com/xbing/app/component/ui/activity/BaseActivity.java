@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,7 +17,7 @@ import com.xbing.app.component.R;
  * Created by Administrator on 2017/9/8.
  */
 
-public class BaseActivity extends FragmentActivity implements View.OnClickListener {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     /** 是否沉浸状态栏 **/
     private boolean isSetStatusBar = true;

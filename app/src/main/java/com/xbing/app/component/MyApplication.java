@@ -1,5 +1,6 @@
 package com.xbing.app.component;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.xbing.app.basic.BaseApplication;
@@ -18,4 +19,8 @@ public class MyApplication extends BaseApplication {
         super.onCreate();
         LogUtil.i(TAG,TAG + "：onCreate()");
     }
+
+//    public static Context getContext(){
+//        return this;
+//    }
 }

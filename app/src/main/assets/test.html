@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>处理写卡结果</title>
+<meta content="width=320,minimum-scale=1,maximum-scale=5,user-scalable=yes" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+
+
+<script type="text/javascript">
+    //Java调用js方法
+    function setICCID(iccid){
+            document.getElementById("ICCID").innerHTML = iccid;
+    }
+    function set2F99(r2f99){
+        document.getElementById("2F99").innerHTML = r2f99;
+    }
+    function writeCard(){
+        var x1 = document.getElementById("writeData").innerText;  
+        alert("x1="+x1);
+        //js调用Java函数并传入参数 
+        javascript:jswritecard.writeCard(x1);
+    }
+    function showWriteResult(result){
+        document.getElementById("writeResult").innerHTML = result;
+    }
+</script>
+</head>
+<body>
+    <div class="phoneinformation">
+            <div class="info">
+                <span class="lefttag">ICCID：</span>
+                <span class="rightinfo" id="ICCID"></span>
+            </div>
+            <div class="info">
+                <span class="lefttag">2F99：</span>
+                <span class="rightinfo" id="2F99"></span>
+            </div>
+            <div class="info">
+                <span class="lefttag">写卡数据：</span>
+                <span class="rightinfo" id="writeData">80835783475834572394893284</span>
+            </div>
+            <div class="info">
+                <span class="lefttag">写卡结果:</span>
+                <span class="rightinfo" id="writeResult"></span>
+            </div>
+            <input type="text" value="text">
+            <!-- onClick 是js调用Java函数 无参 "jswritecard"js回调的接口别名 -->
+            <input type="button" value="获取ICCID" onclick="javascript:jswritecard.getICCID()">
+            <input type="button" value="获取2F99" onclick="javascript:jswritecard.get2F99()"> 
+            <input type="button" value="写卡" onclick="writeCard()"> 
+    </div>
+</body>
+</html>

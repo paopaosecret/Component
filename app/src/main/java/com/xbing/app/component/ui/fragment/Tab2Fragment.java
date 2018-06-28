@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.xbing.app.component.R;
+import com.xbing.app.component.ui.activity.layer2.AddressPickerActivity;
 
 
 /**
@@ -83,6 +84,7 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
         Log.i(TAG,TAG +"->onCreateView");
         View rootView = inflater.inflate(R.layout.tab2_fragment,container,false);
         rootView.findViewById(R.id.btn_handler).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_address_picker_view).setOnClickListener(this);
         return rootView;
     }
 
@@ -102,7 +104,15 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_handler:
                 mHandler.sendEmptyMessage(HandlerWhat.HANDLER_WHAT_TEST);
                 break;
+            case R.id.btn_address_picker_view:
+                gotoAddressPickerActivity();
+                break;
         }
+    }
+
+    private void gotoAddressPickerActivity() {
+        Intent intent = new Intent(this.getContext(), AddressPickerActivity.class);
+        startActivity(intent);
     }
 
     interface HandlerWhat{

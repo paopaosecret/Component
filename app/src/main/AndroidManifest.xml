@@ -21,6 +21,11 @@
 
         <activity android:name=".ui.activity.layer2.ExceptionActivity"/>
         <activity android:name=".ui.activity.layer2.SettingActivity"/>
+        <activity android:name=".ui.activity.layer2.TestLocalServiceActivity"/>
+        <activity android:name=".ui.activity.layer2.AddressPickerActivity"/>
+        <activity android:name=".ui.activity.layer2.JavaJsInteractiveActivity"/>
+
+        <service android:name=".service.LocalService"/>
     </application>
 
 </manifest>

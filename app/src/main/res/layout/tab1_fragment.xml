@@ -55,4 +55,17 @@
         android:id="@+id/btn_go_to_exception"
         android:text="gotoExceptionActivity"/>
 
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_go_to_local_service"
+        android:text="gotoLocalServiceActivity"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_go_to_js"
+        android:text="gotoJSActivity"/>
 </LinearLayout>

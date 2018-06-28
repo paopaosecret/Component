@@ -16,6 +16,8 @@ import com.xbing.app.account.iml.AccountManagerIml;
 import com.xbing.app.account.result.RequestResult;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
+import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
+import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
 
 
@@ -142,8 +144,8 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         contentView.findViewById(R.id.btn_loadfragment).setOnClickListener(this);
         contentView.findViewById(R.id.btn_test_http).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_exception).setOnClickListener(this);
-
-
+        contentView.findViewById(R.id.btn_go_to_local_service).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_js).setOnClickListener(this);
         return  contentView;
 
     }
@@ -176,11 +178,29 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_go_to_exception:
                 gotoExceptionActivity();
                 break;
+
+            case R.id.btn_go_to_local_service:
+                gotoLocalServiceActivity();
+                break;
+
+            case R.id.btn_go_to_js:
+                gotoJsActivity();
+                break;
         }
+    }
+
+    private void gotoJsActivity() {
+        Intent intent = new Intent(getActivity(), JavaJsInteractiveActivity.class);
+        startActivity(intent);
     }
 
     private void gotoExceptionActivity() {
         Intent intent = new Intent(getActivity(), ExceptionActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoLocalServiceActivity() {
+        Intent intent = new Intent(getActivity(), TestLocalServiceActivity.class);
         startActivity(intent);
     }
 }
