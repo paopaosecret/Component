@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="android.notch_support" android:value="true"/>
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +25,7 @@
         <activity android:name=".ui.activity.layer2.TestLocalServiceActivity"/>
         <activity android:name=".ui.activity.layer2.AddressPickerActivity"/>
         <activity android:name=".ui.activity.layer2.JavaJsInteractiveActivity"/>
+        <activity android:name=".ui.activity.layer2.ScreenActivity"/>
 
         <service android:name=".service.LocalService"/>
     </application>

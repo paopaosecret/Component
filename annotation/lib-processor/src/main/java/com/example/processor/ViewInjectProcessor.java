@@ -32,17 +32,20 @@ import javax.lang.model.util.Elements;
  */
 @AutoService(Processor.class)
 public class ViewInjectProcessor extends AbstractProcessor {
+
     // 存放同一个Class下的所有注解
     Map<String, List<VariableInfo>> classMap = new HashMap<>();
+
     // 存放Class对应的TypeElement
     Map<String, TypeElement> classTypeElement = new HashMap<>();
 
-    private Filer filer;
+    private Filer filer;    //注解处理器生成java文件的目录
     Elements elementUtils;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
+        System.out.println("ViewInjectProcessor init()");
         filer = processingEnv.getFiler();           //使用系统默认apt输出目录的文件
         elementUtils = processingEnv.getElementUtils();
     }
@@ -55,14 +58,22 @@ public class ViewInjectProcessor extends AbstractProcessor {
      */
     @Override
     public Set<String> getSupportedAnnotationTypes(){
+        System.out.println("ViewInjectProcessor getSupportedAnnotationTypes()");
         Set<String> annotationTypes = new LinkedHashSet<String>();
-        //需要全类名
+
+        //需要全限定类名（包名 + 类名）
         annotationTypes.add(BindView.class.getCanonicalName());
         return annotationTypes;
     }
 
+    /**
+     * 设置支持的sdk版本
+     *
+     * @return
+     */
     @Override
     public SourceVersion getSupportedSourceVersion(){
+        System.out.println("ViewInjectProcessor getSupportedSourceVersion()");
         return SourceVersion.RELEASE_8;
     }
     /**
@@ -74,6 +85,7 @@ public class ViewInjectProcessor extends AbstractProcessor {
      */
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
+        System.out.println("ViewInjectProcessor process()");
         //第一步：收集注解数据
         collectInfo(roundEnvironment);
 
@@ -88,7 +100,7 @@ public class ViewInjectProcessor extends AbstractProcessor {
 
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(BindView.class);
         for (Element element : elements) {
-            // 获取BindView被注解的值
+            // 获取BindView被注解的值（如：R.id.tv_show）
             int viewId = element.getAnnotation(BindView.class).value();
 
             // 代表被注解的元素   variableElement:mTVResult

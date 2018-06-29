@@ -2,6 +2,8 @@ package com.xbing.app.component.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -46,6 +48,7 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
 
     public TextView mTVtab1,mTVtab2,mTVtab3;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +56,8 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
         InjectHelper.inject(this);
         setTitle("MainActivity");
         setRightTitle("Setting");
-        setBackVisible(false);
+        setLeftVisible(true);
+        setLeftImage(R.mipmap.ic_launcher);
         mFragmentManager = getSupportFragmentManager();
         initViews();
         setTabSelection(mCurrentIndexTab);
@@ -151,10 +155,6 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
      *
      */
     private void initViews() {
-//        mRltab1 = findViewById(R.id.rl_tab1);
-//        mRltab2 = findViewById(R.id.rl_tab2);
-//        mRltab3 = findViewById(R.id.rl_tab3);
-
         mIVtab1 = (ImageView)findViewById(R.id.iv_tab1);
         mIVtab2 = (ImageView)findViewById(R.id.iv_tab2);
         mIVtab3 = (ImageView)findViewById(R.id.iv_tab3);
@@ -212,17 +212,17 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
                 endX = (int) motionEvent.getX();
                 Log.i("onTouch","onTouch endx=" + endX );
                 int offset = endX - startX;
-                if(offset>100){
-                    mCurrentIndexTab++;
-                    if(mCurrentIndexTab>3){
-                        mCurrentIndexTab = 1;
+                if(offset>200){
+                    mCurrentIndexTab--;
+                    if(mCurrentIndexTab < 1){
+                        mCurrentIndexTab = 3;
                     }
                     Log.i("onTouch","onTouch offset=" + offset + ",mCurrentTab=" +mCurrentIndexTab );
                     setTabSelection(mCurrentIndexTab);
-                }else if(offset < -100){
-                    mCurrentIndexTab--;
-                    if(mCurrentIndexTab < 1){
-                        mCurrentIndexTab =3;
+                }else if(offset < -200){
+                    mCurrentIndexTab++;
+                    if(mCurrentIndexTab > 3){
+                        mCurrentIndexTab = 1;
                     }
                     Log.i("onTouch","onTouch offset=" + offset + ",mCurrentTab=" +mCurrentIndexTab );
                     setTabSelection(mCurrentIndexTab);

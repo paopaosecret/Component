@@ -1,17 +1,25 @@
 package com.xbing.app.component.ui.activity;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.RequiresApi;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xbing.app.component.R;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by Administrator on 2017/9/8.
@@ -22,12 +30,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     /** 是否沉浸状态栏 **/
     private boolean isSetStatusBar = true;
     /** 是否允许全屏 **/
-    private boolean mAllowFullScreen = false;
+    private boolean mAllowFullScreen = true;
     /** 是否禁止旋转屏幕 **/
     private boolean isAllowScreenRoate = true;
+    /** 是否使用特殊的标题栏背景颜色，android5.0以上可以设置状态栏背景色，如果不使用则使用透明色值 **/
+    boolean useThemestatusBarColor = true;
+    /** 是否使用状态栏文字和图标为暗色，如果状态栏采用了白色系，则需要使状态栏和图标为暗色，android6.0以上可以设置 */
+    boolean withoutUseStatusBarColor = false;
 
-
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,29 +51,43 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if (isSetStatusBar) {
-                steepStatusBar();
+                setStatusBar();
             }
             if (!isAllowScreenRoate) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             }
+
+            if(checkDeviceHasNavigationBar()){
+                setNavigationHeght();
+            }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+
+    /** 设置导航栏高度 **/
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setNavigationHeght() {
+        // 透明导航栏
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.navigationBarColor));    //设置导航栏颜色
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);     //设置decorview 延伸到导航栏
+//            getWindow().getDecorView().findViewById(android.R.id.content).setPadding(0, 0, 0, getNavigationBarHeight());  //设置decorview边界底部在导航栏上方
         }
     }
 
     /**
      * [沉浸状态栏]
      */
-    private void steepStatusBar() {
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // 透明状态栏
-            getWindow().addFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // 透明导航栏
-            getWindow().addFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().setStatusBarColor(getResources().getColor(R.color.statusBarColor));  //设置状态栏颜色
         }
     }
 
@@ -86,7 +111,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void setBackVisible(Boolean flag){
+    public void setLeftVisible(Boolean flag){
         ImageView back = (ImageView) findViewById(R.id.iv_back);
         if(back != null){
             if(flag){
@@ -96,5 +121,47 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
+    }
+
+    public void setLeftImage(int id){
+        ImageView back = (ImageView) findViewById(R.id.iv_back);
+        if(back != null){
+            back.setImageResource(id);
+        }
+    }
+
+    /**
+     * 获取底部导航栏高度
+     * @return
+     */
+    public int getNavigationBarHeight() {
+        int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+        //获取NavigationBar的高度
+        int navigationHeight = getResources().getDimensionPixelSize(resourceId);
+        return navigationHeight;
+    }
+
+    //判断是否存在NavigationBar
+    public boolean checkDeviceHasNavigationBar() {
+        boolean hasNavigationBar = false;
+        Resources rs = getResources();
+        int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
+        if (id > 0) {
+            hasNavigationBar = rs.getBoolean(id);
+        }
+        try {
+            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
+            Method m = systemPropertiesClass.getMethod("get", String.class);
+            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
+            if ("1".equals(navBarOverride)) {
+                hasNavigationBar = false;
+            } else if ("0".equals(navBarOverride)) {
+                hasNavigationBar = true;
+            }
+        } catch (Exception e) {
+
+        }
+        return hasNavigationBar;
+
     }
 }
