@@ -33,51 +33,53 @@ import javax.lang.model.util.Elements;
 @AutoService(Processor.class)
 public class ViewInjectProcessor extends AbstractProcessor {
 
-    // ´æ·ÅÍ¬Ò»¸öClassÏÂµÄËùÓĞ×¢½â
+    // æ”¶é›†è¢«æ³¨è§£çš„å…ƒç´ ä¿¡æ¯ keyä¸ºå…¨é™å®šç±»å   valueè¢«æ³¨è§£çš„å…ƒç´ 
     Map<String, List<VariableInfo>> classMap = new HashMap<>();
 
-    // ´æ·ÅClass¶ÔÓ¦µÄTypeElement
+    // æ”¶é›†è¢«æ³¨è§£çš„å…ƒç´ çš„ç±»ä¿¡æ¯  keyä¸ºå…¨é™å®šç±»å   valueè¢«æ³¨è§£çš„å…ƒç´ çš„ç±»ç±»å‹ä¿¡æ¯
     Map<String, TypeElement> classTypeElement = new HashMap<>();
 
-    private Filer filer;    //×¢½â´¦ÀíÆ÷Éú³ÉjavaÎÄ¼şµÄÄ¿Â¼
+    private Filer filer;
+
     Elements elementUtils;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-        System.out.println("ViewInjectProcessor init()");
-        filer = processingEnv.getFiler();           //Ê¹ÓÃÏµÍ³Ä¬ÈÏaptÊä³öÄ¿Â¼µÄÎÄ¼ş
+        System.err.println("ViewInjectProcessor init()");
+        filer = processingEnv.getFiler();           //é»˜è®¤androidç”Ÿæˆæ–‡ä»¶ç›®å½•ï¼šbuild\generated\source\apt
+        System.out.println(filer.toString());
         elementUtils = processingEnv.getElementUtils();
     }
 
     /**
-     *  ´Ë·½·¨ÊÕ¼¯ĞèÒª±»´¦ÀíµÄ×¢½â¼¯ºÏ
+     *  è®¾ç½®å¯ä»¥è¢«å¤„ç†çš„æ³¨è§£ç±»å‹
      *
-     *  ÊµÏÖÒ»°ã¹Ì¶¨Ö»ĞèÒªÏòset¼¯ºÏÖĞÌí¼ÓĞèÒª±»´¦ÀíµÄ×¢½â£¬Õâ¸ö¼¯ºÏ»á±»°´Á÷³Ì½»¸ø·½·¨{@link ViewInjectProcessor#process}È¥´¦Àí
+     *  {@link ViewInjectProcessor#process}
      *
      */
     @Override
     public Set<String> getSupportedAnnotationTypes(){
-        System.out.println("ViewInjectProcessor getSupportedAnnotationTypes()");
+        System.err.println("ViewInjectProcessor getSupportedAnnotationTypes()");
         Set<String> annotationTypes = new LinkedHashSet<String>();
 
-        //ĞèÒªÈ«ÏŞ¶¨ÀàÃû£¨°üÃû + ÀàÃû£©
+        //å¢åŠ æ”¯æŒçš„æ³¨è§£
         annotationTypes.add(BindView.class.getCanonicalName());
         return annotationTypes;
     }
 
     /**
-     * ÉèÖÃÖ§³ÖµÄsdk°æ±¾
+     * è®¾ç½®æ”¯æŒçš„jdkç‰ˆæœ¬
      *
      * @return
      */
     @Override
     public SourceVersion getSupportedSourceVersion(){
-        System.out.println("ViewInjectProcessor getSupportedSourceVersion()");
+        System.err.println("ViewInjectProcessor getSupportedSourceVersion()");
         return SourceVersion.RELEASE_8;
     }
     /**
-     * ´¦ÀíÂß¼­
+     * å¤„ç†
      *
      * @param set
      * @param roundEnvironment
@@ -85,11 +87,11 @@ public class ViewInjectProcessor extends AbstractProcessor {
      */
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        System.out.println("ViewInjectProcessor process()");
-        //µÚÒ»²½£ºÊÕ¼¯×¢½âÊı¾İ
+        System.err.println("ViewInjectProcessor process()");
+        //æ”¶é›†æ³¨è§£çš„ å…ƒç´ ä¿¡æ¯
         collectInfo(roundEnvironment);
 
-        //µÚ¶ş²½£º°´ÊÕ¼¯µÄÊı¾İ±àĞ´.java ÎÄ¼ş
+        //æ ¹æ®æ”¶é›†çš„ä¿¡æ¯ç”Ÿæˆjavaæ–‡ä»¶
         writeToFile();
         return true;
     }
@@ -100,28 +102,28 @@ public class ViewInjectProcessor extends AbstractProcessor {
 
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(BindView.class);
         for (Element element : elements) {
-            // »ñÈ¡BindView±»×¢½âµÄÖµ£¨Èç£ºR.id.tv_show£©
+            // R.id.tv_showåœ¨Ræ–‡ä»¶ä¸­çš„å€¼
             int viewId = element.getAnnotation(BindView.class).value();
+            System.out.println("viewId:" + viewId);
 
-            // ´ú±í±»×¢½âµÄÔªËØ   variableElement:mTVResult
+            // variableElement:mTVResult  è·å–è¢«æ³¨è§£å…ƒç´ çš„å˜é‡å…ƒç´ ï¼Œè¯¥å¯¹è±¡å¯è·å–å˜é‡å
             VariableElement variableElement = (VariableElement) element;
             System.out.println("variableElement:" + variableElement.getSimpleName());
 
-            // ±»×¢½âÔªËØËùÔÚµÄClass   typeElement:MainActivity
+            // typeElement:MainActivity  è·å–æ³¨è§£å…ƒç´ æ‰€åœ¨çš„ç±»ç±»å‹ä¿¡æ¯ï¼Œ è¯¥å¯¹è±¡å¯è·å–ç±»å
             TypeElement typeElement = (TypeElement) variableElement.getEnclosingElement();
             System.out.println("typeElement:" + typeElement.getSimpleName());
 
-            // ClassµÄÍêÕûÂ·¾¶   //classFullName:com.example.zhaobing04.okhttpsource.MainActivity
+            // è·å–å…¨é™å®šç±»åï¼ˆåŒ…å+ç±»åï¼‰  //classFullName:com.example.zhaobing04.okhttpsource.MainActivity
             String classFullName = typeElement.getQualifiedName().toString();
 
-            // ÊÕ¼¯ClassÖĞ±»×¢½âÔªËØµÄËùÓĞĞÅÏ¢
+            // å­˜æ”¾ç±»ä¸­è¢«æ³¨è§£çš„å…ƒç´ ä¿¡æ¯
             List<VariableInfo> variableList = classMap.get(classFullName);
 
             if (variableList == null) {
                 variableList = new ArrayList<>();
                 classMap.put(classFullName, variableList);
 
-                // ±£´æClass¶ÔÓ¦ÒªËØ£¨Ãû³Æ¡¢ÍêÕûÂ·¾¶µÈ£©
                 classTypeElement.put(classFullName, typeElement);
             }
             VariableInfo variableInfo = new VariableInfo();
@@ -131,37 +133,38 @@ public class ViewInjectProcessor extends AbstractProcessor {
         }
     }
 
+    //åˆ©ç”¨javapoetç”Ÿæˆjavaæ–‡ä»¶
     void writeToFile() {
         try {
             for (String classFullName : classMap.keySet()) {
                 TypeElement typeElement = classTypeElement.get(classFullName);
 
-                // Ê¹ÓÃ¹¹Ôìº¯Êı°ó¶¨Êı¾İ
                 MethodSpec.Builder constructor = MethodSpec.constructorBuilder()
                         .addModifiers(Modifier.PUBLIC)
                         .addParameter(ParameterSpec.builder(TypeName.get(typeElement.asType()), "activity").build());
+
                 List<VariableInfo> variableList = classMap.get(classFullName);
                 for (VariableInfo variableInfo : variableList) {
                     VariableElement variableElement = variableInfo.getVariableElement();
-                    // ±äÁ¿Ãû³Æ(±ÈÈç£ºTextView tv µÄ tv)
+                    //
                     String variableName = variableElement.getSimpleName().toString();
-                    // ±äÁ¿ÀàĞÍµÄÍêÕûÀàÂ·¾¶£¨±ÈÈç£ºandroid.widget.TextView£©
+                    //
                     String variableFullName = variableElement.asType().toString();
-                    // ÔÚ¹¹Ôì·½·¨ÖĞÔö¼Ó¸³ÖµÓï¾ä£¬ÀıÈç£ºactivity.tv = (android.widget.TextView)activity.findViewById(215334);
+                    // ä¾‹å¦‚ï¼šactivity.tv = (android.widget.TextView)activity.findViewById(215334);
                     constructor.addStatement("activity.$L=($L)activity.findViewById($L)", variableName, variableFullName, variableInfo.getViewId());
                 }
 
-                // ¹¹½¨Class
+                // ????Class
                 TypeSpec typeSpec = TypeSpec.classBuilder(typeElement.getSimpleName() + "$$ViewInjector")
                         .addModifiers(Modifier.PUBLIC)
                         .addMethod(constructor.build())
                         .build();
 
-                // ÓëÄ¿±êClass·ÅÔÚÍ¬Ò»¸ö°üÏÂ£¬½â¾öClassÊôĞÔµÄ¿É·ÃÎÊĞÔ
+                // ?????Class????????????????Class???????????
                 String packageFullName = elementUtils.getPackageOf(typeElement).getQualifiedName().toString();
                 JavaFile javaFile = JavaFile.builder(packageFullName, typeSpec)
                         .build();
-                // Éú³É.java ÎÄ¼ş
+                // ç”Ÿæˆã€‚javaæ–‡ä»¶
                 javaFile.writeTo(filer);
             }
         } catch (Exception ex) {
