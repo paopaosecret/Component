@@ -8,8 +8,11 @@ import javax.lang.model.element.VariableElement;
 
 public class VariableInfo {
 
-    //±»×¢½âµÄidÖµ
+    //è¢«æ³¨è§£çš„idå€¼
     int viewId;
+
+    //è®°å½•è¢«æ³¨è§£çš„å…ƒç´ çš„ä¿¡æ¯
+    VariableElement variableElement;
 
     public int getViewId() {
         return viewId;
@@ -26,9 +29,4 @@ public class VariableInfo {
     public void setVariableElement(VariableElement variableElement) {
         this.variableElement = variableElement;
     }
-
-
-    //¼ÇÂ¼±»×¢½âµÄviewĞÅÏ¢
-    VariableElement variableElement;
-
 }

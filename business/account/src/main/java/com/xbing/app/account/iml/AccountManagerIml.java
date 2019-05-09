@@ -74,6 +74,11 @@ public class AccountManagerIml implements IAccountManager {
     }
 
     @Override
+    public void login() {
+
+    }
+
+    @Override
     public void addPatient(Patient patient, final RequestCallback callBack) {
         String url = "";
         Log.i(TAG,"url:"+url);

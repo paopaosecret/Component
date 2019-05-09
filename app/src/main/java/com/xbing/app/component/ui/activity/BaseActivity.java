@@ -24,7 +24,6 @@ import java.lang.reflect.Method;
 /**
  * Created by Administrator on 2017/9/8.
  */
-
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     /** 是否沉浸状态栏 **/

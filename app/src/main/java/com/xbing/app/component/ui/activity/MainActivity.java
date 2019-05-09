@@ -37,7 +37,6 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
 
     @BindView(R.id.rl_tab1)
     public View mRltab1;
-
     @BindView(R.id.rl_tab2)
     public View mRltab2;
 
@@ -54,12 +53,14 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InjectHelper.inject(this);
+
         setTitle("MainActivity");
         setRightTitle("Setting");
         setLeftVisible(true);
         setLeftImage(R.mipmap.ic_launcher);
         mFragmentManager = getSupportFragmentManager();
         initViews();
+
         setTabSelection(mCurrentIndexTab);
 
     }

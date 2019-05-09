@@ -1,10 +1,13 @@
 package com.xbing.app.component.ui.activity.layer2;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.api.InjectHelper;
 import com.example.lib_annotation.BindView;
@@ -25,6 +28,7 @@ public class ExceptionActivity extends BaseActivity {
     @BindView(R.id.btn_test_exception)
     public Button btnTestException;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +48,13 @@ public class ExceptionActivity extends BaseActivity {
                     String indexException = list.get(2);
 
                 }catch (ArrayIndexOutOfBoundsException e){
+                    Toast.makeText(ExceptionActivity.this,"ArrayIndexOutOfBoundsException",Toast.LENGTH_SHORT).show();
                     Log.d(TAG,"ExceptionActivity:ArrayIndexOutOfBoundsException");
                 }catch (IndexOutOfBoundsException e){
+                    Toast.makeText(ExceptionActivity.this,"IndexOutOfBoundsException",Toast.LENGTH_SHORT).show();
                     Log.d(TAG,"ExceptionActivity:IndexOutOfBoundsException");
                 }catch (Exception e){
+                    Toast.makeText(ExceptionActivity.this,"Exception:" + e.toString(),Toast.LENGTH_SHORT).show();
                     Log.d(TAG,"Exception:" + e.toString());
                 }finally {
                     Log.d(TAG,"finally");

@@ -3,6 +3,7 @@ package com.xbing.app.account.entity;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.lang.annotation.Documented;
 
 /**
  * Created by zhaobing on 2016/8/16.
@@ -11,6 +12,7 @@ public class Patient implements Serializable {
 
     @SerializedName("id")
     private Long patientId;
+
     private String name;
 
     private String sex;

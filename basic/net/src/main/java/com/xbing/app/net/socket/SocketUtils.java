@@ -38,7 +38,7 @@ public class SocketUtils {
             Socket socket = new Socket(host, port);
             OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream());
             StringBuffer sb = new StringBuffer();
-            //http协议中请求行
+            //http协议中请求行，其中“请求行”为：方法 [空格] 请求URI [空格] 版本号 [回车换行]
             sb.append("GET "+url+" HTTP/1.1\r\n");
             //http协议中请求头
             sb.append("Host: "+host+"\r\n");
