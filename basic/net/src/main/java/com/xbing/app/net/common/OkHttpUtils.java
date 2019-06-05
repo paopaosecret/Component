@@ -10,18 +10,20 @@ import com.xbing.app.net.common.callback.Callback;
 import com.xbing.app.net.common.cookie.CookieJarImpl;
 import com.xbing.app.net.common.cookie.store.MemoryCookieStore;
 import com.xbing.app.net.common.https.HttpsUtils;
-import com.xbing.app.net.common.log.LoggerInterceptor;
+import com.xbing.app.net.common.interceptor.LoggerInterceptor;
 import com.xbing.app.net.common.request.RequestCall;
 import com.xbing.app.net.common.utils.Platform;
-import com.xbing.app.net.okhttp3.Call;
-import com.xbing.app.net.okhttp3.OkHttpClient;
-import com.xbing.app.net.okhttp3.Response;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
+
 /**
  * Created by zhaobing  15/8/17.
  */
@@ -53,8 +55,7 @@ public class OkHttpUtils
             public boolean verify(String hostname, SSLSession session) {
                 return true;
             }
-        })
-                .connectTimeout(10000L, TimeUnit.MILLISECONDS)
+        }).connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 .addInterceptor(new LoggerInterceptor("app_business_http_api",true))
                 .cookieJar(cookieJar1)
@@ -143,12 +144,12 @@ public class OkHttpUtils
         final Callback finalCallback = callback;
         final int id = requestCall.getOkHttpRequest().getId();
 
-        requestCall.getCall().enqueue(new com.xbing.app.net.okhttp3.Callback()
+        requestCall.getCall().enqueue(new okhttp3.Callback()
         {
             @Override
             public void onFailure(Call call, final IOException e)
             {
-                sendFailResultCallback(call, e, finalCallback, id);
+                sendFailResultCallback(call, e, finalCallback);
             }
 
             @Override
@@ -156,23 +157,23 @@ public class OkHttpUtils
             {
                 if (call.isCanceled())
                 {
-                    sendFailResultCallback(call, new IOException("Canceled!"), finalCallback, id);
+                    sendFailResultCallback(call, new IOException("Canceled!"), finalCallback);
                     return;
                 }
 
-                if (!finalCallback.validateReponse(response, id))
+                if (!finalCallback.validateReponse(response))
                 {
-                    sendFailResultCallback(call, new IOException("request failed , reponse's code is : " + response.code()), finalCallback, id);
+                    sendFailResultCallback(call, new IOException("request failed , reponse's code is : " + response.code()), finalCallback);
                     return;
                 }
 
                 try
                 {
-                    Object o = finalCallback.parseNetworkResponse(response, id);
-                    sendSuccessResultCallback(o, finalCallback, id);
+                    Object o = finalCallback.parseNetworkResponse(response);
+                    sendSuccessResultCallback(o, finalCallback);
                 } catch (Exception e)
                 {
-                    sendFailResultCallback(call, e, finalCallback, id);
+                    sendFailResultCallback(call, e, finalCallback);
                 }
 
             }
@@ -180,7 +181,7 @@ public class OkHttpUtils
     }
 
 
-    public void sendFailResultCallback(final Call call, final Exception e, final Callback callback, final int id)
+    public void sendFailResultCallback(final Call call, final Exception e, final Callback callback)
     {
         if (callback == null) return;
 
@@ -189,13 +190,13 @@ public class OkHttpUtils
             @Override
             public void run()
             {
-                callback.onError(call, e, id);
-                callback.onAfter(id);
+                callback.onError(call, e);
+                callback.onAfter();
             }
         });
     }
 
-    public void sendSuccessResultCallback(final Object object, final Callback callback, final int id)
+    public void sendSuccessResultCallback(final Object object, final Callback callback)
     {
         if (callback == null) return;
         mPlatform.execute(new Runnable()
@@ -203,8 +204,8 @@ public class OkHttpUtils
             @Override
             public void run()
             {
-                callback.onResponse(object, id);
-                callback.onAfter(id);
+                callback.onResponse(object);
+                callback.onAfter();
             }
         });
     }

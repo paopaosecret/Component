@@ -2,9 +2,10 @@ package com.xbing.app.net.common.builder;
 
 import com.xbing.app.net.common.request.PostFileRequest;
 import com.xbing.app.net.common.request.RequestCall;
-import com.xbing.app.net.okhttp3.MediaType;
 
 import java.io.File;
+
+import okhttp3.MediaType;
 
 /**
  * Created by zhaobing  15/12/14.

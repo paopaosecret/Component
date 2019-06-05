@@ -3,12 +3,13 @@ package com.xbing.app.net.common.request;
 import com.xbing.app.net.common.OkHttpUtils;
 import com.xbing.app.net.common.callback.Callback;
 import com.xbing.app.net.common.utils.Exceptions;
-import com.xbing.app.net.okhttp3.MediaType;
-import com.xbing.app.net.okhttp3.Request;
-import com.xbing.app.net.okhttp3.RequestBody;
 
 import java.io.File;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * Created by zhaobing  15/12/14.
@@ -57,7 +58,7 @@ public class PostFileRequest extends OkHttpRequest
                     @Override
                     public void run()
                     {
-                        callback.inProgress(bytesWritten * 1.0f / contentLength,contentLength,id);
+                        callback.inProgress(bytesWritten * 1.0f / contentLength,contentLength);
                     }
                 });
 

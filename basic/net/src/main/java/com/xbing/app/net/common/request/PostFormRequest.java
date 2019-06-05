@@ -3,12 +3,6 @@ package com.xbing.app.net.common.request;
 import com.xbing.app.net.common.OkHttpUtils;
 import com.xbing.app.net.common.builder.PostFormBuilder;
 import com.xbing.app.net.common.callback.Callback;
-import com.xbing.app.net.okhttp3.FormBody;
-import com.xbing.app.net.okhttp3.Headers;
-import com.xbing.app.net.okhttp3.MediaType;
-import com.xbing.app.net.okhttp3.MultipartBody;
-import com.xbing.app.net.okhttp3.Request;
-import com.xbing.app.net.okhttp3.RequestBody;
 
 import java.io.UnsupportedEncodingException;
 import java.net.FileNameMap;
@@ -16,6 +10,13 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 
 /**
@@ -70,7 +71,7 @@ public class PostFormRequest extends OkHttpRequest
                     @Override
                     public void run()
                     {
-                        callback.inProgress(bytesWritten * 1.0f / contentLength,contentLength,id);
+                        callback.inProgress(bytesWritten * 1.0f / contentLength,contentLength);
                     }
                 });
 

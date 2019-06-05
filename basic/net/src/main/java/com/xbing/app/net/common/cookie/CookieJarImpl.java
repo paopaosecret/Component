@@ -3,11 +3,12 @@ package com.xbing.app.net.common.cookie;
 import com.xbing.app.net.common.cookie.store.CookieStore;
 import com.xbing.app.net.common.cookie.store.MemoryCookieStore;
 import com.xbing.app.net.common.utils.Exceptions;
-import com.xbing.app.net.okhttp3.Cookie;
-import com.xbing.app.net.okhttp3.CookieJar;
-import com.xbing.app.net.okhttp3.HttpUrl;
 
 import java.util.List;
+
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
 
 /**
  * Created by zhaobing 18/06/020.

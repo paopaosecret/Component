@@ -2,13 +2,13 @@ package com.xbing.app.net.common.request;
 
 import com.xbing.app.net.common.OkHttpUtils;
 import com.xbing.app.net.common.callback.Callback;
-import com.xbing.app.net.okhttp3.Call;
-import com.xbing.app.net.okhttp3.OkHttpClient;
-import com.xbing.app.net.okhttp3.Request;
-import com.xbing.app.net.okhttp3.Response;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by zhaobing  15/12/15.
@@ -84,7 +84,7 @@ public class RequestCall
 
         if (callback != null)
         {
-            callback.onBefore(request, getOkHttpRequest().getId());
+            callback.onBefore(request);
         }
 
         OkHttpUtils.getInstance().execute(this, callback);

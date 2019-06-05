@@ -3,7 +3,8 @@ package com.xbing.app.net.common.callback;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.xbing.app.net.okhttp3.Response;
+import okhttp3.Response;
+
 
 /**
  * Created by zhaobing  15/12/14.
@@ -11,7 +12,7 @@ import com.xbing.app.net.okhttp3.Response;
 public abstract class BitmapCallback extends Callback<Bitmap>
 {
     @Override
-    public Bitmap parseNetworkResponse(Response response , int id) throws Exception
+    public Bitmap parseNetworkResponse(Response response) throws Exception
     {
         return BitmapFactory.decodeStream(response.body().byteStream());
     }

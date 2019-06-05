@@ -1,13 +1,13 @@
 package com.xbing.app.net.common.cookie.store;
 
-import com.xbing.app.net.okhttp3.Cookie;
-import com.xbing.app.net.okhttp3.HttpUrl;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import okhttp3.Cookie;
+import okhttp3.HttpUrl;
 
 
 /**

@@ -1,11 +1,12 @@
 package com.xbing.app.net.common.request;
 
 import com.xbing.app.net.common.utils.Exceptions;
-import com.xbing.app.net.okhttp3.MediaType;
-import com.xbing.app.net.okhttp3.Request;
-import com.xbing.app.net.okhttp3.RequestBody;
 
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * Created by zhaobing  15/12/14.

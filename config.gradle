@@ -3,7 +3,7 @@ ext {
 
     android = [
             compileSdkVersion   : 23,
-            buildToolsVersion   : '23.0.2',
+            buildToolsVersion   : '27.0.3',
             applicationId       : 'com.xbing.app.component',
             minSdkVersion       : 19,
             targetSdkVersion    : 23,
@@ -18,7 +18,7 @@ ext {
             "rxjava"            : 'io.reactivex:rxjava:1.1.0',
             "rxandroid"         : 'io.reactivex:rxandroid:1.1.0',
             "converter-gson"    : 'com.squareup.retrofit2:converter-gson:2.1.0',      //转换器，请求结果转换为model
-            "adapter-rxjava"    : 'com.squareup.retrofit2:adapter-rxjava:2.1.0'       //配合Rxjava使用
-
+            "adapter-rxjava"    : 'com.squareup.retrofit2:adapter-rxjava:2.1.0',      //配合Rxjava使用
+            "okhttp3"           : 'com.squareup.okhttp3:okhttp:3.8.0'
     ]
 }

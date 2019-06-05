@@ -1,10 +1,10 @@
 package com.xbing.app.net.common.request;
 
-import com.xbing.app.net.okhttp3.MediaType;
-import com.xbing.app.net.okhttp3.RequestBody;
 
 import java.io.IOException;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.ForwardingSink;
