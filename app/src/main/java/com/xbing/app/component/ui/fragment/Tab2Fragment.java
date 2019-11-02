@@ -19,6 +19,10 @@ import android.widget.Toast;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer2.AddressPickerActivity;
+import com.xbing.app.component.ui.activity.layer2.CacheTestActivity;
+import com.xbing.app.component.ui.activity.layer2.HybridActivity;
+import com.xbing.app.component.ui.activity.layer2.RxJavaActivity;
+import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 
 
 /**
@@ -85,6 +89,9 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
         View rootView = inflater.inflate(R.layout.tab2_fragment,container,false);
         rootView.findViewById(R.id.btn_handler).setOnClickListener(this);
         rootView.findViewById(R.id.btn_address_picker_view).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_cache).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_rx_java).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_hybrid).setOnClickListener(this);
         return rootView;
     }
 
@@ -107,7 +114,33 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_address_picker_view:
                 gotoAddressPickerActivity();
                 break;
+            case R.id.btn_cache:
+                gotoCacheActivity();
+                break;
+            case R.id.btn_rx_java:
+//                gotoRxJavaActivity();
+                WebResourceCacheManager.getInstance().init();
+                break;
+            case R.id.btn_hybrid:
+                gotoHybridActivity();
+                break;
         }
+    }
+
+    private void gotoHybridActivity() {
+        Intent intent = new Intent(this.getContext(), HybridActivity.class);
+        Log.e("WebviewTest","启动开始时间：" + System.currentTimeMillis());
+        startActivity(intent);
+    }
+
+    private void gotoRxJavaActivity() {
+        Intent intent = new Intent(this.getContext(), RxJavaActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoCacheActivity() {
+        Intent intent = new Intent(this.getContext(), CacheTestActivity.class);
+        startActivity(intent);
     }
 
     private void gotoAddressPickerActivity() {

@@ -29,7 +29,7 @@ public class SocketUtils {
         return mInstance;
     }
 
-    public void send(String host, int port, String url, CallBack callback)
+    public void send(String host, int port, String url, SocketCallBack callback)
     {
         try {
             //http连接（短连接，缺点每次再连，占用时间）：http定义请求由三部分组成，返回的内容由三部分组成

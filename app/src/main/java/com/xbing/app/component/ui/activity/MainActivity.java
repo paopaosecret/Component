@@ -25,7 +25,7 @@ import com.xbing.app.component.ui.fragment.Tab3Fragment;
 import java.util.List;
 
 public class MainActivity  extends BaseActivity implements View.OnTouchListener{
-
+//https://hyapp.58.com/app/school/open/articles/tohome
     private Tab1Fragment mTabFragment1;
     private Tab2Fragment mTabFragment2;
     private Tab3Fragment mTabFragment3;

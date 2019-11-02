@@ -4,8 +4,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +19,6 @@ import com.xbing.app.component.ui.activity.BaseActivity;
 /**
  * Created by zhaobing04 on 2018/6/7.
  */
-
 public class TestLocalServiceActivity extends BaseActivity {
 
     private static final String TAG = TestLocalServiceActivity.class.getSimpleName();
@@ -42,6 +43,7 @@ public class TestLocalServiceActivity extends BaseActivity {
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

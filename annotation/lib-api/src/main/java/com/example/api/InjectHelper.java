@@ -5,10 +5,8 @@ import android.app.Activity;
 import java.lang.reflect.Constructor;
 
 /**
- * @author hiphonezhu@gmail.com
- * @version [CompilerAnnotation, 17/6/20 11:28]
+ *
  */
-
 public class InjectHelper {
     public static void inject(Activity host) {
         String classFullName = host.getClass().getName() + "$$ViewInjector";

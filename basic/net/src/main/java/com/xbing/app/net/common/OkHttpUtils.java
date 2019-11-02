@@ -1,28 +1,29 @@
 package com.xbing.app.net.common;
 
-import com.xbing.app.net.common.builder.GetBuilder;
-import com.xbing.app.net.common.builder.HeadBuilder;
-import com.xbing.app.net.common.builder.OtherRequestBuilder;
-import com.xbing.app.net.common.builder.PostFileBuilder;
-import com.xbing.app.net.common.builder.PostFormBuilder;
-import com.xbing.app.net.common.builder.PostStringBuilder;
+import android.app.Application;
+import android.content.Context;
+import android.os.Handler;
+
+import com.xbing.app.net.common.cache.dbcache.CacheMode;
 import com.xbing.app.net.common.callback.Callback;
 import com.xbing.app.net.common.cookie.CookieJarImpl;
+import com.xbing.app.net.common.cookie.store.CookieStore;
 import com.xbing.app.net.common.cookie.store.MemoryCookieStore;
+import com.xbing.app.net.common.entity.HttpHeaders;
+import com.xbing.app.net.common.entity.HttpParams;
 import com.xbing.app.net.common.https.HttpsUtils;
 import com.xbing.app.net.common.interceptor.LoggerInterceptor;
-import com.xbing.app.net.common.request.RequestCall;
+import com.xbing.app.net.common.request.BaseRequest;
 import com.xbing.app.net.common.utils.Platform;
 
-import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
-import okhttp3.Response;
 
 /**
  * Created by zhaobing  15/8/17.
@@ -33,6 +34,85 @@ public class OkHttpUtils
     private volatile static OkHttpUtils mInstance;
     private OkHttpClient mOkHttpClient;
     private Platform mPlatform;
+    private HttpParams mCommonParams;                     //全局公共请求参数
+    private HttpHeaders mCommonHeaders;                   //全局公共请求头
+    private CacheMode mCacheMode;
+    private long mCacheTime;
+
+    public Handler getmHandler() {
+        return mHandler;
+    }
+
+    public void setmHandler(Handler mHandler) {
+        this.mHandler = mHandler;
+    }
+
+    private Handler mHandler;                            //用于在主线程执行的调度器
+
+
+    public CookieJarImpl getCookieJar() {
+        return cookieJar;
+    }
+
+    public void setCookieJar(CookieJarImpl cookieJar) {
+        this.cookieJar = cookieJar;
+    }
+
+    private CookieJarImpl cookieJar;                      //全局 Cookie 实例
+
+    public long getmCacheTime() {
+        return mCacheTime;
+    }
+
+    public void setmCacheTime(long mCacheTime) {
+        this.mCacheTime = mCacheTime;
+    }
+
+    public CacheMode getmCacheMode() {
+        return mCacheMode;
+    }
+
+    public void setmCacheMode(CacheMode mCacheMode) {
+        this.mCacheMode = mCacheMode;
+    }
+
+    public HttpParams getmCommonParams() {
+        return mCommonParams;
+    }
+
+   public void setmCommonParams(HttpParams mCommonParams) {
+        this.mCommonParams = mCommonParams;
+    }
+
+    public HttpHeaders getmCommonHeaders() {
+        return mCommonHeaders;
+    }
+
+    public void setmCommonHeaders(HttpHeaders mCommonHeaders) {
+        this.mCommonHeaders = mCommonHeaders;
+    }
+
+    /** 全局cookie存取规则 */
+    public OkHttpUtils setCookieStore(CookieStore cookieStore) {
+        cookieJar = new CookieJarImpl(cookieStore);
+        return this;
+    }
+
+    private static Application context;                   //全局上下文
+
+    /** 必须在全局Application先调用，获取context上下文，否则缓存无法使用 */
+    public static void init(Application app) {
+        context = app;
+    }
+
+    public static Context getContext(){
+        if(context == null){
+            throw new IllegalStateException("请为http组件设置上下文环境，之后可使用缓存服务");
+        }
+
+        return context;
+    }
+
 
     public OkHttpUtils(OkHttpClient okHttpClient)
     {
@@ -97,117 +177,20 @@ public class OkHttpUtils
         return mOkHttpClient;
     }
 
-    public static GetBuilder get()
+
+    public void execute(final BaseRequest requestCall, Callback callback)
     {
-        return new GetBuilder();
-    }
 
-    public static PostStringBuilder postString()
-    {
-        return new PostStringBuilder();
-    }
-
-    public static PostFileBuilder postFile()
-    {
-        return new PostFileBuilder();
-    }
-
-    public static PostFormBuilder post()
-    {
-        return new PostFormBuilder();
-    }
-
-    public static OtherRequestBuilder put()
-    {
-        return new OtherRequestBuilder(METHOD.PUT);
-    }
-
-    public static HeadBuilder head()
-    {
-        return new HeadBuilder();
-    }
-
-    public static OtherRequestBuilder delete()
-    {
-        return new OtherRequestBuilder(METHOD.DELETE);
-    }
-
-    public static OtherRequestBuilder patch()
-    {
-        return new OtherRequestBuilder(METHOD.PATCH);
-    }
-
-    public void execute(final RequestCall requestCall, Callback callback)
-    {
-        if (callback == null)
-            callback = Callback.CALLBACK_DEFAULT;
-        final Callback finalCallback = callback;
-        final int id = requestCall.getOkHttpRequest().getId();
-
-        requestCall.getCall().enqueue(new okhttp3.Callback()
-        {
-            @Override
-            public void onFailure(Call call, final IOException e)
-            {
-                sendFailResultCallback(call, e, finalCallback);
-            }
-
-            @Override
-            public void onResponse(final Call call, final Response response)
-            {
-                if (call.isCanceled())
-                {
-                    sendFailResultCallback(call, new IOException("Canceled!"), finalCallback);
-                    return;
-                }
-
-                if (!finalCallback.validateReponse(response))
-                {
-                    sendFailResultCallback(call, new IOException("request failed , reponse's code is : " + response.code()), finalCallback);
-                    return;
-                }
-
-                try
-                {
-                    Object o = finalCallback.parseNetworkResponse(response);
-                    sendSuccessResultCallback(o, finalCallback);
-                } catch (Exception e)
-                {
-                    sendFailResultCallback(call, e, finalCallback);
-                }
-
-            }
-        });
     }
 
 
     public void sendFailResultCallback(final Call call, final Exception e, final Callback callback)
     {
-        if (callback == null) return;
 
-        mPlatform.execute(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                callback.onError(call, e);
-                callback.onAfter();
-            }
-        });
     }
 
     public void sendSuccessResultCallback(final Object object, final Callback callback)
     {
-        if (callback == null) return;
-        mPlatform.execute(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                callback.onResponse(object);
-                callback.onAfter();
-            }
-        });
     }
 
     public void cancelTag(Object tag)

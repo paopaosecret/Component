@@ -23,46 +23,24 @@ import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
 /**
- * <pre>
- *     OkHttpClient client = new OkHttpClient.Builder()
- *             .cookieJar(new JavaNetCookieJar(new CookieManager(
- *                     new PersistentCookieStore(getApplicationContext()),
- *                             CookiePolicy.ACCEPT_ALL))
- *             .build();
- *
- * </pre>
- * <p/>
- * from http://stackoverflow.com/questions/25461792/persistent-cookie-store-using-okhttp-2-on-android
- * <p/>
- * <br/>
- * A persistent cookie store which implements the Apache HttpClient CookieStore interface.
- * Cookies are stored and will persist on the user's device between application sessions since they
- * are serialized and stored in SharedPreferences. Instances of this class are
- * designed to be used with AsyncHttpClient#setCookieStore, but can also be used with a
- * regular old apache HttpClient/HttpContext if you prefer.
+ * 持久化cookies 保存在sp文件中
  */
-public class PersistentCookieStore implements CookieStore
+public class SPCookieStore implements CookieStore
 {
 
-    private static final String LOG_TAG = "PersistentCookieStore";
-    private static final String COOKIE_PREFS = "CookiePrefsFile";
+    private static final String LOG_TAG = "SPCookieStore";
+    private static final String COOKIE_FILE_NAME = "CookieSPFile";
     private static final String COOKIE_NAME_PREFIX = "cookie_";
 
     private final HashMap<String, ConcurrentHashMap<String, Cookie>> cookies;
-    private final SharedPreferences cookiePrefs;
+    private final SharedPreferences cookieSP;
 
-    /**
-     * Construct a persistent cookie store.
-     *
-     * @param context Context to attach cookie store to
-     */
-    public PersistentCookieStore(Context context)
+    public SPCookieStore(Context context)
     {
-        cookiePrefs = context.getSharedPreferences(COOKIE_PREFS, 0);
+        cookieSP = context.getSharedPreferences(COOKIE_FILE_NAME, 0);
         cookies = new HashMap<String, ConcurrentHashMap<String, Cookie>>();
 
-        // Load any previously stored cookies into the store
-        Map<String, ?> prefsMap = cookiePrefs.getAll();
+        Map<String, ?> prefsMap = cookieSP.getAll();
         for (Map.Entry<String, ?> entry : prefsMap.entrySet())
         {
             if (((String) entry.getValue()) != null && !((String) entry.getValue()).startsWith(COOKIE_NAME_PREFIX))
@@ -70,7 +48,7 @@ public class PersistentCookieStore implements CookieStore
                 String[] cookieNames = TextUtils.split((String) entry.getValue(), ",");
                 for (String name : cookieNames)
                 {
-                    String encodedCookie = cookiePrefs.getString(COOKIE_NAME_PREFIX + name, null);
+                    String encodedCookie = cookieSP.getString(COOKIE_NAME_PREFIX + name, null);
                     if (encodedCookie != null)
                     {
                         Cookie decodedCookie = decodeCookie(encodedCookie);
@@ -110,7 +88,7 @@ public class PersistentCookieStore implements CookieStore
         }
 
         // Save cookie into persistent store
-        SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
+        SharedPreferences.Editor prefsWriter = cookieSP.edit();
         prefsWriter.putString(uri.host(), TextUtils.join(",", cookies.get(uri.host()).keySet()));
         prefsWriter.putString(COOKIE_NAME_PREFIX + name, encodeCookie(new SerializableHttpCookie(cookie)));
         prefsWriter.apply();
@@ -152,6 +130,15 @@ public class PersistentCookieStore implements CookieStore
         return ret;
     }
 
+    @Override
+    public List<Cookie> getALL() {
+        ArrayList<Cookie> ret = new ArrayList<Cookie>();
+        for (String key : cookies.keySet())
+            ret.addAll(cookies.get(key).values());
+
+        return ret;
+    }
+
     private static boolean isCookieExpired(Cookie cookie)
     {
         return cookie.expiresAt() < System.currentTimeMillis();
@@ -160,7 +147,7 @@ public class PersistentCookieStore implements CookieStore
     @Override
     public boolean removeAll()
     {
-        SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
+        SharedPreferences.Editor prefsWriter = cookieSP.edit();
         prefsWriter.clear();
         prefsWriter.apply();
         cookies.clear();
@@ -177,8 +164,8 @@ public class PersistentCookieStore implements CookieStore
         {
             cookies.get(uri.host()).remove(name);
 
-            SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
-            if (cookiePrefs.contains(COOKIE_NAME_PREFIX + name))
+            SharedPreferences.Editor prefsWriter = cookieSP.edit();
+            if (cookieSP.contains(COOKIE_NAME_PREFIX + name))
             {
                 prefsWriter.remove(COOKIE_NAME_PREFIX + name);
             }
@@ -193,13 +180,9 @@ public class PersistentCookieStore implements CookieStore
     }
 
     @Override
-    public List<Cookie> getCookies()
-    {
-        ArrayList<Cookie> ret = new ArrayList<Cookie>();
-        for (String key : cookies.keySet())
-            ret.addAll(cookies.get(key).values());
-
-        return ret;
+    public boolean remove(HttpUrl uri) {
+        cookies.remove(uri.host());
+        return false;
     }
 
 

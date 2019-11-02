@@ -10,24 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.xbing.app.account.IAccountManager;
-import com.xbing.app.account.RequestCallback;
-import com.xbing.app.account.entity.MovieObject;
 import com.xbing.app.account.iml.AccountManagerIml;
-import com.xbing.app.account.iml.MovieService;
-import com.xbing.app.account.result.RequestResult;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -43,10 +34,6 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     private IAccountManager mAccountManager;
 
     public static final String BASE_URL = "https://api.douban.com/v2/movie/";
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
 
 
     @Override
@@ -232,20 +219,20 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
 
     private void getTopMovie(){
         //获取接口实例
-        MovieService  movieService = retrofit.create(MovieService.class);
-        //调用方法得到一个Call
-        Call<MovieObject> call = movieService.getTop250(0,20);
-        //进行网络请求
-        call.enqueue(new Callback<MovieObject>() {
-            @Override
-            public void onResponse(Call<MovieObject> call, Response<MovieObject> response) {
-                Log.d(TAG,"response:" + response.body().toString());
-            }
-            @Override
-            public void onFailure(Call<MovieObject> call, Throwable t) {
-                Log.d(TAG,"response:" + t.toString());
-            }
-        });
+//        MovieService  movieService = retrofit.create(MovieService.class);
+//        //调用方法得到一个Call
+//        Call<MovieObject> call = movieService.getTop250(0,20);
+//        //进行网络请求
+//        call.enqueue(new Callback<MovieObject>() {
+//            @Override
+//            public void onResponse(Call<MovieObject> call, Response<MovieObject> response) {
+//                Log.d(TAG,"response:" + response.body().toString());
+//            }
+//            @Override
+//            public void onFailure(Call<MovieObject> call, Throwable t) {
+//                Log.d(TAG,"response:" + t.toString());
+//            }
+//        });
 
     }
 }

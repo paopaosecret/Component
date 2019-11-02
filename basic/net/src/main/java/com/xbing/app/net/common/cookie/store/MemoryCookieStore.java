@@ -9,9 +9,8 @@ import java.util.Set;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-
 /**
- * Created by zhaobing 18/06/020.
+ * cookies保存在内存中
  */
 public class MemoryCookieStore implements CookieStore
 {
@@ -53,15 +52,7 @@ public class MemoryCookieStore implements CookieStore
     }
 
     @Override
-    public boolean removeAll()
-    {
-        allCookies.clear();
-        return true;
-    }
-
-    @Override
-    public List<Cookie> getCookies()
-    {
+    public List<Cookie> getALL() {
         List<Cookie> cookies = new ArrayList<>();
         Set<String> httpUrls = allCookies.keySet();
         for (String url : httpUrls)
@@ -69,6 +60,13 @@ public class MemoryCookieStore implements CookieStore
             cookies.addAll(allCookies.get(url));
         }
         return cookies;
+    }
+
+    @Override
+    public boolean removeAll()
+    {
+        allCookies.clear();
+        return true;
     }
 
 
@@ -81,6 +79,11 @@ public class MemoryCookieStore implements CookieStore
             return cookies.remove(cookie);
         }
         return false;
+    }
+
+    @Override
+    public boolean remove(HttpUrl uri) {
+        return allCookies.remove(uri.host()) != null;
     }
 
 

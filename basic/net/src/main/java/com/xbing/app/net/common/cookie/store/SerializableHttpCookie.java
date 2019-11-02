@@ -10,11 +10,8 @@ import okhttp3.Cookie;
 
 
 /**
- * from http://stackoverflow.com/questions/25461792/persistent-cookie-store-using-okhttp-2-on-android
- * and<br/>
- * http://www.geebr.com/post/okHttp3%E4%B9%8BCookies%E7%AE%A1%E7%90%86%E5%8F%8A%E6%8C%81%E4%B9%85%E5%8C%96
+ * 序列化cookies
  */
-
 public class SerializableHttpCookie implements Serializable
 {
     private static final long serialVersionUID = 6374381323722046732L;
@@ -62,6 +59,7 @@ public class SerializableHttpCookie implements Serializable
         boolean httpOnly = in.readBoolean();
         boolean hostOnly = in.readBoolean();
         boolean persistent = in.readBoolean();
+
         Cookie.Builder builder = new Cookie.Builder();
         builder = builder.name(name);
         builder = builder.value(value);
@@ -71,6 +69,5 @@ public class SerializableHttpCookie implements Serializable
         builder = secure ? builder.secure() : builder;
         builder = httpOnly ? builder.httpOnly() : builder;
         clientCookie = builder.build();
-
     }
 }

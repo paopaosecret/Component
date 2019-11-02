@@ -24,47 +24,52 @@ import javax.net.ssl.X509TrustManager;
 /**
  * Created by zhaobing  15/12/14.
  */
-public class HttpsUtils
-{
-    public static class SSLParams
-    {
+public class HttpsUtils {
+    public static class SSLParams {
         public SSLSocketFactory sSLSocketFactory;
         public X509TrustManager trustManager;
     }
 
-    public static SSLParams getSslSocketFactory(InputStream[] certificates, InputStream bksFile, String password)
-    {
+    public static SSLParams getSslSocketFactory(InputStream[] certificates, InputStream bksFile, String password) {
         SSLParams sslParams = new SSLParams();
-        try
-        {
+        try {
             TrustManager[] trustManagers = prepareTrustManager(certificates);
             KeyManager[] keyManagers = prepareKeyManager(bksFile, password);
             SSLContext sslContext = SSLContext.getInstance("TLS");
             X509TrustManager trustManager = null;
-            if (trustManagers != null)
-            {
+            if (trustManagers != null) {
                 trustManager = new MyTrustManager(chooseTrustManager(trustManagers));
-            } else
-            {
+            } else {
                 trustManager = new UnSafeTrustManager();
             }
             sslContext.init(keyManagers, new TrustManager[]{trustManager},null);
             sslParams.sSLSocketFactory = sslContext.getSocketFactory();
             sslParams.trustManager = trustManager;
             return sslParams;
-        } catch (NoSuchAlgorithmException e)
-        {
+        } catch (NoSuchAlgorithmException e) {
             throw new AssertionError(e);
-        } catch (KeyManagementException e)
-        {
+        } catch (KeyManagementException e) {
             throw new AssertionError(e);
-        } catch (KeyStoreException e)
-        {
+        } catch (KeyStoreException e) {
             throw new AssertionError(e);
         }
     }
+    public static class UnSafeTrustManager implements X509TrustManager {
+        @Override
+        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        }
 
-    private class UnSafeHostnameVerifier implements HostnameVerifier
+        @Override
+        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        @Override
+        public X509Certificate[] getAcceptedIssuers() {
+            return new X509Certificate[0];
+        }
+    }
+
+    public static class UnSafeHostnameVerifier implements HostnameVerifier
     {
         @Override
         public boolean verify(String hostname, SSLSession session)
@@ -73,26 +78,6 @@ public class HttpsUtils
         }
     }
 
-    private static class UnSafeTrustManager implements X509TrustManager
-    {
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType)
-                throws CertificateException
-        {
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType)
-                throws CertificateException
-        {
-        }
-
-        @Override
-        public X509Certificate[] getAcceptedIssuers()
-        {
-            return new X509Certificate[]{};
-        }
-    }
 
     private static TrustManager[] prepareTrustManager(InputStream... certificates)
     {
@@ -203,7 +188,6 @@ public class HttpsUtils
             this.localTrustManager = localTrustManager;
         }
 
-
         @Override
         public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException
         {
@@ -221,7 +205,6 @@ public class HttpsUtils
                 localTrustManager.checkServerTrusted(chain, authType);
             }
         }
-
 
         @Override
         public X509Certificate[] getAcceptedIssuers()

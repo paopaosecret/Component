@@ -19,4 +19,28 @@
         android:id="@+id/btn_address_picker_view"
         android:text="地址选择view"/>
 
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_cache"
+        android:text="缓存测试"/>
+
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_rx_java"
+        android:text="RXJava"/>
+
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_hybrid"
+        android:text="Hybrid测试"/>
+
 </LinearLayout>

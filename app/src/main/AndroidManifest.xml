@@ -3,6 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xbing.app.component">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!--SDCard写权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> <!--SDCard读权限-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
     <application
         tools:replace="android:name"
         android:name=".MyApplication"
@@ -26,7 +36,9 @@
         <activity android:name=".ui.activity.layer2.AddressPickerActivity"/>
         <activity android:name=".ui.activity.layer2.JavaJsInteractiveActivity"/>
         <activity android:name=".ui.activity.layer2.ScreenActivity"/>
-
+        <activity android:name=".ui.activity.layer2.CacheTestActivity"/>
+        <activity android:name=".ui.activity.layer2.RxJavaActivity"/>
+        <activity android:name=".ui.activity.layer2.HybridActivity"/>
         <service android:name=".service.LocalService"/>
     </application>
 
