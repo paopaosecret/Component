@@ -8,11 +8,14 @@ import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.api.InjectHelper;
 import com.example.lib_annotation.BindView;
 import com.xbing.app.component.R;
+import com.xbing.app.component.utils.DisplayUtils;
 
 import java.lang.reflect.Method;
 
@@ -21,11 +24,54 @@ public class ScreenActivity extends Activity {
     @BindView(R.id.tv_screen_show)
     public TextView tvShow;
 
+    @BindView(R.id.btn_test)
+    public Button btnTest;
+
+    @BindView(R.id.btn_test1)
+    public Button btnTest1;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
+        // 隐藏标题栏
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // 定义全屏参数
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+
+        // 获得当前窗体对象
+        Window window = ScreenActivity.this.getWindow();
+        // 设置当前窗体为全屏显示
+        window.setFlags(flag, flag);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen);
         InjectHelper.inject(this);
+
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int[] location = new int[2];
+                int[] location1= new int[2];
+                tvShow.getLocationOnScreen(location);
+                tvShow.getLocationInWindow(location1);
+
+                Rect rect = new Rect();
+                tvShow.getGlobalVisibleRect(rect);
+                StringBuffer sb = new StringBuffer("");
+                sb.append("onScreen x:" + location[0] + ",tvShow y:" + location[1] + "\n");
+                sb.append("onWindow x:" + location1[0] + ",tvShow y:" + location1[1] + "\n");
+                sb.append("rect  left:" + rect.left + ",rect.top:" + rect.top + "\n");
+                sb.append(DisplayUtils.testSize(ScreenActivity.this));
+                tvShow.setText(sb.toString());
+            }
+        });
+
+        btnTest1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayUtils.qieHuan(ScreenActivity.this);
+            }
+        });
     }
 
     @Override
@@ -74,6 +120,7 @@ public class ScreenActivity extends Activity {
         }
 
         tvShow.setText(sb.toString());
+
     }
 
 

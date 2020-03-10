@@ -74,15 +74,22 @@ public class WebResourceCacheManager {
             }
 
             File cacheResource = new File(cacheResourceDir);
+            delFile(cacheResource);
             if (!cacheResource.exists()) {
                 cacheResource.mkdirs();
             }
-
             File cacheTest = new File(cacheParentDir, cachedText);
             if (!cacheTest.exists()) {
                 cacheTest.createNewFile();
+
                 // 清除缓存文件
                 delFile(cacheResource);
+
+                // 初始化下载文件夹
+                if (!cacheResource.exists()) {
+                    cacheResource.mkdirs();
+                }
+
             } else {
                 File file = new File(cacheParentDir, cachedText);
                 fr = new FileReader(file);
@@ -174,24 +181,27 @@ public class WebResourceCacheManager {
     /**
      * 把js,css,png,jpg 保存在本地
      */
-    public void downloadResourceToLocal(final String uri) {
+    public void downloadResourceToLocal(final String url) {
 
         ThreadPoolManager.newInstance().addExecuteTask(new Runnable() {
             @Override
             public void run() {
-                String cacheUri = getCacheUri(uri);
+                String cacheUri = getCacheUri(url);
                 FileOutputStream output = null;
                 InputStream uristream = null;
                 try {
                     String fileName = MD5Utils.encode(cacheUri);
                     Log.i("WebviewTest",  cacheUri + " 开始下载:" + cacheResourceDir + fileName);
                     File newFile = new File(cacheResourceDir, fileName);
-                    if(!newFile.exists()){
+                    if(newFile.exists()){
+                        delFile(newFile);
+                        newFile.createNewFile();
+                    }else{
                         newFile.createNewFile();
                     }
                     cachingList.put(cacheUri, cacheResourceDir + fileName);
 
-                    URL uri = new URL(cacheUri);
+                    URL uri = new URL(url);
                     URLConnection connection = uri.openConnection();
                     uristream = connection.getInputStream();
                     output = new FileOutputStream(newFile);
@@ -204,6 +214,7 @@ public class WebResourceCacheManager {
                     }
 
                     synchronized (WebResourceCacheManager.class) {
+                        Log.i("WebviewTest",  cacheUri + " 下载完成:" + cacheResourceDir + fileName);
                         WriteStringToFile(cacheUri, cacheResourceDir + fileName);
                         cachingList.remove(cacheUri);
                         cachedList.put(cacheUri, cacheResourceDir + fileName);

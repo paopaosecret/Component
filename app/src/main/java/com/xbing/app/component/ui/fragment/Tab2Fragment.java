@@ -1,14 +1,10 @@
 package com.xbing.app.component.ui.fragment;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
-import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,9 +16,11 @@ import android.widget.Toast;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer2.AddressPickerActivity;
 import com.xbing.app.component.ui.activity.layer2.CacheTestActivity;
+import com.xbing.app.component.ui.activity.layer2.CoordinatorActivity;
+import com.xbing.app.component.ui.activity.layer2.DragGridViewActivity;
 import com.xbing.app.component.ui.activity.layer2.HybridActivity;
 import com.xbing.app.component.ui.activity.layer2.RxJavaActivity;
-import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
+import com.xbing.app.component.utils.webview.WebviewProxy;
 
 
 /**
@@ -91,7 +89,10 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
         rootView.findViewById(R.id.btn_address_picker_view).setOnClickListener(this);
         rootView.findViewById(R.id.btn_cache).setOnClickListener(this);
         rootView.findViewById(R.id.btn_rx_java).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_initwebview).setOnClickListener(this);
         rootView.findViewById(R.id.btn_hybrid).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_draggridview).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_coordinatorview).setOnClickListener(this);
         return rootView;
     }
 
@@ -118,18 +119,37 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
                 gotoCacheActivity();
                 break;
             case R.id.btn_rx_java:
-//                gotoRxJavaActivity();
-                WebResourceCacheManager.getInstance().init();
+                gotoRxJavaActivity();
+                break;
+
+            case R.id.btn_initwebview:
+                initWebview();
                 break;
             case R.id.btn_hybrid:
                 gotoHybridActivity();
                 break;
+            case R.id.btn_draggridview:
+                gotoDragGridViewActivity();
+                break;
+
+            case R.id.btn_coordinatorview:
+                gotoCoordinatorActivity();
+                break;
         }
+    }
+
+    private void initWebview() {
+        WebviewProxy.getInstatnce().load("https://hyapp.58.com/app/school/open/articles/tohome");
     }
 
     private void gotoHybridActivity() {
         Intent intent = new Intent(this.getContext(), HybridActivity.class);
         Log.e("WebviewTest","启动开始时间：" + System.currentTimeMillis());
+        startActivity(intent);
+    }
+
+    private void gotoCoordinatorActivity(){
+        Intent intent = new Intent(this.getContext(), CoordinatorActivity.class);
         startActivity(intent);
     }
 
@@ -145,6 +165,11 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
 
     private void gotoAddressPickerActivity() {
         Intent intent = new Intent(this.getContext(), AddressPickerActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoDragGridViewActivity() {
+        Intent intent = new Intent(this.getContext(), DragGridViewActivity.class);
         startActivity(intent);
     }
 

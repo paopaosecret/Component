@@ -2,6 +2,9 @@
 apply from : "config.gradle"
 buildscript {
     repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
         jcenter()
         maven {
             url 'https://maven.google.com'
@@ -18,8 +21,10 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
         jcenter()
-
         maven {
             url 'https://maven.google.com'
         }

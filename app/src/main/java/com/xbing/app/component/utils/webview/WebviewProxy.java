@@ -1,41 +1,49 @@
-package com.xbing.app.component.ui.activity.layer2;
+package com.xbing.app.component.utils.webview;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
-import android.webkit.WebBackForwardList;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.api.InjectHelper;
-import com.example.lib_annotation.BindView;
-import com.xbing.app.component.R;
-import com.xbing.app.component.ui.activity.BaseActivity;
+import com.xbing.app.component.MyApplication;
 import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 
-public class HybridActivity extends BaseActivity {
+public class WebviewProxy implements IWebviewProxy{
 
-    @BindView(R.id.webview_root)
-    public WebView webView;
+    private WebView webView;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Log.e("WebviewTest","创建页面容器：" + System.currentTimeMillis());
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hybrid);
-        InjectHelper.inject(this);
-        
+    private static volatile WebviewProxy INSTANCE;
+
+    private WebviewProxy(){
+        webView = new WebView(MyApplication.getInstance());
         initWebView();
-
     }
+
+    public static WebviewProxy getInstatnce(){
+        if(INSTANCE == null){
+            synchronized (WebviewProxy.class){
+                if(INSTANCE == null){
+                    INSTANCE = new WebviewProxy();
+                }
+            }
+        }
+
+        return INSTANCE;
+    }
+
+    @Override
+    public void load(String url) {
+        webView.loadUrl(url);
+    }
+
 
     private void initWebView() {
 
@@ -43,12 +51,6 @@ public class HybridActivity extends BaseActivity {
          * 配置WebView的一些属性
          */
         initWebSetting();
-
-        /**
-         * 将商学院首页当做测试页面加载
-         */
-        webView.loadUrl("https://hyapp.58.com/app/school/open/articles/tohome");
-
         /**
          * 设置webView的委托客户端
          */
@@ -203,12 +205,6 @@ public class HybridActivity extends BaseActivity {
             }
             return super.shouldInterceptRequest(view, url);
         }
-
-
     }
 
-    @Override
-    public void onBackPressed() {
-        this.finish();
-    }
 }

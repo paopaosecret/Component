@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_zhuantou"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:text="保洁清洗"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_title"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="left"/>
+        <ImageView
+            android:id="@+id/iv_jiaobiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jiaobiao"
+            android:foregroundGravity="left"
+            android:scaleType="fitStart"
+            android:layout_weight="1"
+            android:layout_gravity="left|bottom"/>/>
+    </LinearLayout>
+
+</RelativeLayout>

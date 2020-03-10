@@ -75,4 +75,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_go_to_screen_test"
         android:text="gotoScreenActivity"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_go_to_view_test"
+        android:text="view测试页面"/>
 </LinearLayout>

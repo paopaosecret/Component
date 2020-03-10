@@ -15,8 +15,8 @@ ext {
             "appcompat-v7"      : 'com.android.support:appcompat-v7:24.2.1',
             "gson"              : 'com.google.code.gson:gson:2.6.2',
             "retrofit2"         : 'com.squareup.retrofit2:retrofit:2.1.0',
-            "rxjava"            : 'io.reactivex:rxjava:1.1.0',
-            "rxandroid"         : 'io.reactivex:rxandroid:1.1.0',
+            "rxjava"            : 'io.reactivex:rxjava:1.2.4',
+            "rxandroid"         : 'io.reactivex:rxandroid:1.2.1',
             "converter-gson"    : 'com.squareup.retrofit2:converter-gson:2.1.0',      //转换器，请求结果转换为model
             "adapter-rxjava"    : 'com.squareup.retrofit2:adapter-rxjava:2.1.0',      //配合Rxjava使用
             "okhttp3"           : 'com.squareup.okhttp3:okhttp:3.8.0'

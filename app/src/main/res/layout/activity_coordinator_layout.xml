@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.layer2.CoordinatorActivity">
+
+    <Button
+        android:id="@+id/btn_open"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="协调者布局标题按栏 不动"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/cl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test文本"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_tab"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#FF952e"
+            android:visibility="invisible"
+            app:layout_behavior="@string/behavior_tab_recycleview"/>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

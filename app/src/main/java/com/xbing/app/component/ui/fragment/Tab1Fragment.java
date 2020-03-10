@@ -18,6 +18,7 @@ import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
+import com.xbing.app.component.ui.activity.layer2.ViewActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
 
 
@@ -150,6 +151,8 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         contentView.findViewById(R.id.btn_go_to_local_service).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_js).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_screen_test).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_screen_test).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_view_test).setOnClickListener(this);
         return  contentView;
 
     }
@@ -194,7 +197,16 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_go_to_screen_test:
                 gotoScreenActivity();
                 break;
+
+            case R.id.btn_go_to_view_test:
+                gotoViewActivity();
+                break;
         }
+    }
+
+    private void gotoViewActivity() {
+        Intent intent = new Intent(getActivity(), ViewActivity.class);
+        startActivity(intent);
     }
 
     private void gotoScreenActivity() {

@@ -247,7 +247,7 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_address_text, parent, false));
+            return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.address_picker_item_text, parent, false));
         }
 
         @Override

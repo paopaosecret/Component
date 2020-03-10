@@ -37,9 +37,15 @@
         <activity android:name=".ui.activity.layer2.JavaJsInteractiveActivity"/>
         <activity android:name=".ui.activity.layer2.ScreenActivity"/>
         <activity android:name=".ui.activity.layer2.CacheTestActivity"/>
-        <activity android:name=".ui.activity.layer2.RxJavaActivity"/>
+        <activity android:name=".ui.activity.layer2.RxJavaActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"/>/>
+        <activity android:name=".ui.activity.layer2.ViewActivity"/>
         <activity android:name=".ui.activity.layer2.HybridActivity"/>
+        <activity android:name=".ui.activity.layer2.DragGridViewActivity"/>
+        <activity android:name=".ui.activity.layer2.CoordinatorActivity"/>
         <service android:name=".service.LocalService"/>
+
     </application>
 
 </manifest>

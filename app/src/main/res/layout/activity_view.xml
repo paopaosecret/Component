@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xbing.app.component.ui.customview.MainIconItem
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        app:textAlign="left"
+        app:marginLeft="2"/>
+
+    <com.xbing.app.component.ui.customview.MainIconItem
+
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        app:textAlign="center"/>
+
+</LinearLayout>
