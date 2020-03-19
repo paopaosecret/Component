@@ -3,6 +3,7 @@ package com.xbing.app.component.ui.adapter;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,12 @@ public class CoordinatorAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private List<String> mDatas;
     private List<String> mTabDatas = new ArrayList<>();
+    private RecyclerView tabChild;
 
-    public CoordinatorAdapter(Context context, List<String> datas){
+    public CoordinatorAdapter(Context context, List<String> datas,RecyclerView rvTabChild){
         mContext = context;
         mDatas = datas;
+        this.tabChild = rvTabChild;
         for(int i= 0;i<10;i++){
             mTabDatas.add("TAB"+ i);
         }
@@ -51,6 +54,14 @@ public class CoordinatorAdapter extends RecyclerView.Adapter {
             TabAdapter tabAdapter = new TabAdapter(mContext, mTabDatas);
             ((RecycleHolder)holder).rvTab.setAdapter(tabAdapter);
             ((RecycleHolder)holder).rvTab.setTag("TabRecycleView");
+            ((RecycleHolder)holder).rvTab.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    Log.e("TabBehavior", "child onScrolled: dx = " + dx + ", dy = " + dy);
+                    if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE)
+                        tabChild.scrollBy(dx, dy);
+                }
+            });
         }
     }
 

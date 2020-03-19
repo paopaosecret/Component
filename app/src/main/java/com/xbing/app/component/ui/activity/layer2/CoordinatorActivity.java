@@ -72,7 +72,7 @@ public class CoordinatorActivity extends BaseActivity{
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerview.setLayoutManager(linearLayoutManager);
 
-        CoordinatorAdapter myDemoAdapter = new CoordinatorAdapter(this, mDatas);
+        CoordinatorAdapter myDemoAdapter = new CoordinatorAdapter(this, mDatas, rvTab);
         recyclerview.setAdapter(myDemoAdapter);
         recyclerview.setTag("ListRecycleView");
 

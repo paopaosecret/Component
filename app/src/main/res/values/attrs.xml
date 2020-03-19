@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="MainIconItem">
+    <declare-styleable name="MyLayout">
         <attr name="textAlign">
             <enum name="left" value="0" />
             <enum name="center" value="1"/>

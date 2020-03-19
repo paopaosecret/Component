@@ -65,4 +65,11 @@
         android:id="@+id/btn_coordinatorview"
         android:text="协调者布局测试"/>
 
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_test_view"
+        android:text="view相关知识"/>
+
 </LinearLayout>

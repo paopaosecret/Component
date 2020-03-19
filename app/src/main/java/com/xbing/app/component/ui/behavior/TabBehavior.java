@@ -154,9 +154,9 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
                 if (!isLock){
                     isLock = true;
                     ((RecyclerView) first).addOnScrollListener(new RecyclerView.OnScrollListener() {
-
                         @Override
                         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                            Log.e("TabBehavior", "first onScrolled: dx = " + dx + ", dy = " + dy);
                             if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE)
                                 child.scrollBy(dx, dy);
                         }
@@ -165,12 +165,14 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
                     ((RecyclerView)child).addOnScrollListener(new RecyclerView.OnScrollListener() {
                         @Override
                         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                            Log.e("TabBehavior", "child onScrolled: dx = " + dx + ", dy = " + dy);
                             if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE)
                                 first.scrollBy(dx, dy);
                         }
                     });
 
                 }
+
             }
             Log.e("TabBehavior", "onScrolled: position = " + position + ", pos = " + pos);
             if (position == -1) return;

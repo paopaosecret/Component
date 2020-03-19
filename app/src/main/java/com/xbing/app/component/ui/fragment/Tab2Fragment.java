@@ -20,6 +20,7 @@ import com.xbing.app.component.ui.activity.layer2.CoordinatorActivity;
 import com.xbing.app.component.ui.activity.layer2.DragGridViewActivity;
 import com.xbing.app.component.ui.activity.layer2.HybridActivity;
 import com.xbing.app.component.ui.activity.layer2.RxJavaActivity;
+import com.xbing.app.component.ui.activity.layer2.TestViewActivity;
 import com.xbing.app.component.utils.webview.WebviewProxy;
 
 
@@ -93,6 +94,7 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
         rootView.findViewById(R.id.btn_hybrid).setOnClickListener(this);
         rootView.findViewById(R.id.btn_draggridview).setOnClickListener(this);
         rootView.findViewById(R.id.btn_coordinatorview).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_test_view).setOnClickListener(this);
         return rootView;
     }
 
@@ -135,7 +137,15 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_coordinatorview:
                 gotoCoordinatorActivity();
                 break;
+            case R.id.btn_test_view:
+                gotoTestViewActivity();
+                break;
         }
+    }
+
+    private void gotoTestViewActivity() {
+        Intent intent = new Intent(this.getContext(), TestViewActivity.class);
+        startActivity(intent);
     }
 
     private void initWebview() {

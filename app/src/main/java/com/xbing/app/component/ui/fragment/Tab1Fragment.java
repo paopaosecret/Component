@@ -18,7 +18,7 @@ import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
-import com.xbing.app.component.ui.activity.layer2.ViewActivity;
+import com.xbing.app.component.ui.activity.layer3.ViewDispatchActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
 
 
@@ -205,7 +205,7 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     }
 
     private void gotoViewActivity() {
-        Intent intent = new Intent(getActivity(), ViewActivity.class);
+        Intent intent = new Intent(getActivity(), ViewDispatchActivity.class);
         startActivity(intent);
     }
 
