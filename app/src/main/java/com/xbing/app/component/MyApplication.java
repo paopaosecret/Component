@@ -1,5 +1,7 @@
 package com.xbing.app.component;
 
+import android.content.Context;
+
 import com.xbing.app.basic.BaseApplication;
 import com.xbing.app.basic.common.LogUtil;
 import com.xbing.app.net.common.OkHttpUtils;
@@ -13,6 +15,11 @@ import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 public class MyApplication extends BaseApplication {
 
     private static final String TAG = MyApplication.class.getSimpleName();
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+    }
 
     @Override
     public void onCreate() {

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer2.AddressPickerActivity;
 import com.xbing.app.component.ui.activity.layer2.CacheTestActivity;
+import com.xbing.app.component.ui.activity.layer2.ClassLoderActivity;
 import com.xbing.app.component.ui.activity.layer2.CoordinatorActivity;
 import com.xbing.app.component.ui.activity.layer2.DragGridViewActivity;
 import com.xbing.app.component.ui.activity.layer2.HybridActivity;
@@ -95,6 +96,7 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
         rootView.findViewById(R.id.btn_draggridview).setOnClickListener(this);
         rootView.findViewById(R.id.btn_coordinatorview).setOnClickListener(this);
         rootView.findViewById(R.id.btn_test_view).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_test_classloader).setOnClickListener(this);
         return rootView;
     }
 
@@ -140,7 +142,15 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_test_view:
                 gotoTestViewActivity();
                 break;
+            case R.id.btn_test_classloader:
+                gotoClassLoaderActivity();
+                break;
         }
+    }
+
+    private void gotoClassLoaderActivity() {
+        Intent intent = new Intent(this.getContext(), ClassLoderActivity.class);
+        startActivity(intent);
     }
 
     private void gotoTestViewActivity() {
