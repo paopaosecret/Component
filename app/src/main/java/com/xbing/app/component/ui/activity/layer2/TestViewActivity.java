@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.xbing.app.component.R;
+import com.xbing.app.component.ui.activity.layer3.CustomViewActivity;
 import com.xbing.app.component.ui.activity.layer3.ViewDispatchActivity;
 import com.xbing.app.component.utils.ToastUtils;
 
@@ -19,7 +20,7 @@ public class TestViewActivity  extends Activity implements View.OnClickListener 
         setContentView(R.layout.activity_test_view);
 
         findViewById(R.id.btn_fenfa).setOnClickListener(this);
-        findViewById(R.id.btn_huizhi).setOnClickListener(this);
+        findViewById(R.id.btn_custom).setOnClickListener(this);
     }
 
     @Override
@@ -32,12 +33,16 @@ public class TestViewActivity  extends Activity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.btn_fenfa:
                 gotoViewDispatchActivity();
-                ToastUtils.makeText(TestViewActivity.this, "View事件分发", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_huizhi:
-                ToastUtils.makeText(TestViewActivity.this, "View绘制流程", Toast.LENGTH_SHORT).show();
+            case R.id.btn_custom:
+                gotoCustomViewActivity();
                 break;
         }
+    }
+
+    private void gotoCustomViewActivity() {
+        Intent intent = new Intent(this, CustomViewActivity.class);
+        startActivity(intent);
     }
 
     private void gotoViewDispatchActivity() {

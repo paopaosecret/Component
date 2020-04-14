@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.xbing.app.component.ui.customview.MyLayout
+    <com.xbing.app.component.ui.customview.testdispatch.MyLayout
         android:id="@+id/test_view"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"

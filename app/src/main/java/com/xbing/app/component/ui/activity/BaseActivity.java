@@ -37,7 +37,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     /** 是否使用状态栏文字和图标为暗色，如果状态栏采用了白色系，则需要使状态栏和图标为暗色，android6.0以上可以设置 */
     boolean withoutUseStatusBarColor = false;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +51,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             if (isSetStatusBar) {
                 setStatusBar();
             }
-            if (!isAllowScreenRoate) {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-            } else {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            }
-
-            if(checkDeviceHasNavigationBar()){
-                setNavigationHeght();
-            }
+//            if (!isAllowScreenRoate) {
+//                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            } else {
+//                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//            }
+//
+//            if(checkDeviceHasNavigationBar()){
+//                setNavigationHeght();
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

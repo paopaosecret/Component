@@ -47,7 +47,6 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
 
     public TextView mTVtab1,mTVtab2,mTVtab3;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -11,7 +11,7 @@
         android:id="@+id/btn_open"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="协调者布局标题按栏 不动"
+        android:text="协调者布局标题按栏不动"
         android:paddingLeft="15dp"
         android:layout_marginTop="20dp"
         android:textSize="20dp"

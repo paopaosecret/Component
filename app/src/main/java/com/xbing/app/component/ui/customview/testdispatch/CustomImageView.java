@@ -1,4 +1,4 @@
-package com.xbing.app.component.ui.customview;
+package com.xbing.app.component.ui.customview.testdispatch;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -75,7 +75,7 @@ public class AccountManagerIml implements IAccountManager {
 
     @Override
     public void login() {
-
+        return;
     }
 
     @Override

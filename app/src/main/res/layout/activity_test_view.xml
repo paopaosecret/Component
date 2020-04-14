@@ -17,11 +17,11 @@
         tools:layout_editor_absoluteY="29dp" />
 
     <Button
-        android:id="@+id/btn_huizhi"
+        android:id="@+id/btn_custom"
         android:layout_width="138dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
-        android:text="view绘制流程"
+        android:text="自定义View"
         app:layout_constraintTop_toBottomOf="@+id/btn_fenfa"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="0dp" />

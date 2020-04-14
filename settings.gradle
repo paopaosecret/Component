@@ -2,3 +2,4 @@ include ':app',
         ':basic:common', ':basic:net', ':basic:db', ':basic:view',
         ':business:share', ':business:thridlogin', ':business:account',
         ':annotation:lib-processor', ':annotation:lib-annotation', ':annotation:lib-api'
+include ':logPluginLib'

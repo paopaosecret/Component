@@ -1,5 +1,8 @@
 package com.xbing.app.component;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.xbing.app.basic.BaseApplication;
 import com.xbing.app.basic.common.LogUtil;
 import com.xbing.app.net.common.OkHttpUtils;

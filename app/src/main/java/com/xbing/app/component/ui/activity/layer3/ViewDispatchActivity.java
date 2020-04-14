@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.xbing.app.component.R;
-import com.xbing.app.component.ui.customview.MyLayout;
+import com.xbing.app.component.ui.customview.testdispatch.MyLayout;
 
 public class ViewDispatchActivity extends Activity {
     private String TAG = ViewDispatchActivity.class.getSimpleName();

@@ -157,7 +157,4 @@ public class CacheDao<T> extends BaseCacheDao<CacheEntity<T>> {
         int delete = delete(whereClause, whereArgs);
         return delete > 0;
     }
-
-
-
 }

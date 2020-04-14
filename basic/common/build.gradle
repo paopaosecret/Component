@@ -12,6 +12,7 @@ android {
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -32,4 +33,5 @@ dependencies {
     implementation rootProject.ext.dependencies["rxjava"]
     // RxJava
     implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["multidex"]
 }
