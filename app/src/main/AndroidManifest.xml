@@ -46,7 +46,9 @@
         <activity android:name=".ui.activity.layer2.CoordinatorActivity"/>
         <activity android:name=".ui.activity.layer2.TestViewActivity"/>
         <activity android:name=".ui.activity.layer3.CustomViewActivity"/>
+        <activity android:name=".ui.activity.layer2.ClassLoderActivity"/>
         <service android:name=".service.LocalService"/>
+
 
     </application>
 
