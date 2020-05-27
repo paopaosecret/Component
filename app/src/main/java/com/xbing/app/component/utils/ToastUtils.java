@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xbing.app.component.MyApplication;
 
 
 /**
@@ -27,5 +28,7 @@ public class ToastUtils extends Toast {
         super(context);
     }
 
-
+    public static void show(String msg){
+        Toast.makeText(MyApplication.getInstance(), msg, Toast.LENGTH_SHORT).show();
+    }
 }

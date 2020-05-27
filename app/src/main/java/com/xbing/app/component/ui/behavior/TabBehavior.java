@@ -13,9 +13,6 @@ import com.xbing.app.component.R;
 
 public class TabBehavior extends CoordinatorLayout.Behavior<View> {
 
-    // 列表顶部和title底部重合时，列表的滑动距离。
-    private float slideY;
-
     /** behavior标记的view */
     private View child;
 
@@ -59,6 +56,7 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
      * @param dependency child依赖dependency
      * @return true 处理了, false  没处理
      */
+    @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
         return true;
     }

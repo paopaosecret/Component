@@ -2,17 +2,20 @@
 apply from : "config.gradle"
 buildscript {
     repositories {
+        google()
+        mavenCentral()
+        jcenter()
      	maven {
             url 'https://maven.aliyun.com/repository/google'
         }
         maven {
             url 'https://maven.aliyun.com/repository/jcenter'
         }
-        jcenter()
+
         maven {
             url 'https://maven.google.com'
         }
-        google()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
@@ -21,17 +24,20 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
+        mavenCentral()
+        jcenter()
         maven {
             url 'https://maven.aliyun.com/repository/google'
         }
         maven {
             url 'https://maven.aliyun.com/repository/jcenter'
         }
-        jcenter()
+
         maven {
             url 'https://maven.google.com'
         }
-        google()
+
     }
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {

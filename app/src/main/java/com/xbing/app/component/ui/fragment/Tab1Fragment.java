@@ -161,7 +161,9 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btn_loadfragment:
+                int a = 100;
                 AddFragment fragment = new AddFragment();
+                Log.e("debugger TAG", "切换 AddFragment");
                 mFragmentManager.beginTransaction()
                         .add(R.id.fl_content,fragment)
                         .hide(this)

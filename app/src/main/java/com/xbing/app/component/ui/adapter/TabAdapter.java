@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xbing.app.component.R;
+import com.xbing.app.component.utils.ToastUtils;
 
 import java.util.List;
 
@@ -26,8 +28,14 @@ public class TabAdapter  extends RecyclerView.Adapter<TabAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tvTitle.setText(mDatas.get(position));
+        holder.tvTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.show("位置:" +position);
+            }
+        });
     }
 
     @Override

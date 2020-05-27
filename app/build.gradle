@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.example.transformlib.logPluginLib'
-
-buildscript {
-    repositories {
-        maven {
-            url '../maven-repository'
-        }
-        google()
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.example.transformlib:logPluginLib:1.0.0'
-    }
-}
+//apply plugin: 'com.example.transformlib.logPluginLib'
+//
+//buildscript {
+//    repositories {
+//        maven {
+//            url '../maven-repository'
+//        }
+//        google()
+//        jcenter()
+//    }
+//
+//    dependencies {
+//        classpath 'com.example.transformlib:logPluginLib:1.0.0'
+//    }
+//}
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]

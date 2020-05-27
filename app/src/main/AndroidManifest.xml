@@ -48,8 +48,15 @@
         <activity android:name=".ui.activity.layer3.CustomViewActivity"/>
         <activity android:name=".ui.activity.layer2.ClassLoderActivity"/>
         <service android:name=".service.LocalService"/>
-
-
+        <service
+            android:name=".service.BookService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="android.intent.action.BookService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

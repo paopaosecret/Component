@@ -45,14 +45,15 @@ public class HybridActivity extends BaseActivity {
         initWebSetting();
 
         /**
-         * 将商学院首页当做测试页面加载
-         */
-        webView.loadUrl("https://hyapp.58.com/app/school/open/articles/tohome");
-
-        /**
          * 设置webView的委托客户端
          */
         webView.setWebViewClient(new MyWebViewClient());
+
+
+        /**
+         * 将商学院首页当做测试页面加载
+         */
+        webView.loadUrl("https://hyapp.58.com/app/school/open/articles/tohome");
     }
 
     private void initWebSetting() {

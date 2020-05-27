@@ -72,8 +72,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         // 透明导航栏
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             getWindow().setNavigationBarColor(getResources().getColor(R.color.navigationBarColor));    //设置导航栏颜色
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);     //设置decorview 延伸到导航栏
-//            getWindow().getDecorView().findViewById(android.R.id.content).setPadding(0, 0, 0, getNavigationBarHeight());  //设置decorview边界底部在导航栏上方
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);     //设置decorview 延伸到导航栏
+            getWindow().getDecorView().findViewById(android.R.id.content).setPadding(0, 0, 0, getNavigationBarHeight());  //设置decorview边界底部在导航栏上方
         }
     }
 
@@ -85,7 +85,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // 透明状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            getWindow().setStatusBarColor(getResources().getColor(R.color.statusBarColor));  //设置状态栏颜色
+            getWindow().setStatusBarColor(getResources().getColor(R.color.statusBarColor));  //设置状态栏颜色
         }
     }
 

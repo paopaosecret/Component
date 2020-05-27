@@ -31,7 +31,7 @@ public class CoordinatorActivity extends BaseActivity{
     RecyclerView rvTab;
 
     @BindView(R.id.rv_list)
-    RecyclerView recyclerview;
+    public RecyclerView recyclerview;
 
     @BindView(R.id.btn_open)
     Button openBT;

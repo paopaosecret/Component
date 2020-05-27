@@ -15,11 +15,16 @@ import java.util.Random;
 
 public class LocalService extends Service {
 
-    // 当使用bindService（）启动服务，给客户端提供通信的Binder对象
+    /**
+     * 当使用bindService（）启动服务，给客户端提供通信的Binder对象
+     */
     private final IBinder mBinder = new LocalBinder();
 
-    // 随机生成一个数返回给客户端
+    /**
+     * 随机生成一个数返回给客户端
+     */
     private final Random mGenerator = new Random();
+
     public int getRandomNumber() {
         return mGenerator.nextInt(100);
     }
