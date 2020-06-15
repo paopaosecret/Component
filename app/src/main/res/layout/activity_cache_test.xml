@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -12,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="replace"
-        app:layout_constraintTop_toTopOf="parent"    />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:layout_marginTop="10dp"
@@ -20,7 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="delete"
-        app:layout_constraintTop_toBottomOf="@id/btn_replace"    />
+        app:layout_constraintTop_toBottomOf="@id/btn_replace"
+        tools:ignore="MissingConstraints" />
 
 
     <Button
@@ -29,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="get"
-        app:layout_constraintTop_toBottomOf="@id/btn_delete"    />
+        app:layout_constraintTop_toBottomOf="@id/btn_delete"
+        tools:ignore="MissingConstraints" />
 
 
     <TextView
@@ -37,7 +41,8 @@
         android:id="@+id/tv_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_get"    />
+        app:layout_constraintTop_toBottomOf="@id/btn_get"
+        tools:ignore="MissingConstraints" />
 
 
-</androidx.constraintlayout.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

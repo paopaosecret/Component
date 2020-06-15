@@ -21,6 +21,9 @@ import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+/**
+ * 测试该页面请关闭手机连接的代理
+ */
 public class HybridActivity extends BaseActivity {
 
     @BindView(R.id.webview_root)

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="bindService"
-        app:layout_constraintTop_toBottomOf="@id/tv_result"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:layout_marginTop="5dp"
@@ -27,7 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="unbindService"
-        app:layout_constraintTop_toBottomOf="@id/btn_bindService"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_bindService"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:layout_marginTop="5dp"
@@ -35,7 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="startService"
-        app:layout_constraintTop_toBottomOf="@id/btn_unbindService"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_unbindService"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:layout_marginTop="5dp"
@@ -43,7 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="stopService"
-        app:layout_constraintTop_toBottomOf="@id/btn_startService"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_startService"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:layout_marginTop="5dp"
@@ -51,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="getNumber"
-        app:layout_constraintTop_toBottomOf="@id/btn_stopService"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_stopService"
+        tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

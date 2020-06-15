@@ -300,8 +300,10 @@ public class WebResourceCacheManager {
 
         if (file.isDirectory()) {
             File[] files = file.listFiles();
-            for (File f : files) {
-                delFile(f);
+            if(files != null && files.length > 0){
+                for (File f : files) {
+                    delFile(f);
+                }
             }
         }
         return file.delete();

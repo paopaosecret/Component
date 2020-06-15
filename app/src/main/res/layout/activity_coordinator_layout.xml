@@ -18,7 +18,7 @@
         android:gravity="center_vertical"
         />
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/cl_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,12 +29,12 @@
             android:layout_height="match_parent"
             android:text="test文本"/>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tab"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -43,5 +43,5 @@
             app:layout_behavior="@string/behavior_tab_recycleview"/>
 
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>
