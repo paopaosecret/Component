@@ -3,9 +3,6 @@ package com.xbing.app.component.ui.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +18,9 @@ import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
 import com.xbing.app.component.ui.activity.layer3.ViewDispatchActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * Created by zhaobing on 2016/10/25.

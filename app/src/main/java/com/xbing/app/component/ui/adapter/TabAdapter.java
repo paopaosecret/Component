@@ -1,17 +1,17 @@
 package com.xbing.app.component.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.utils.ToastUtils;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TabAdapter  extends RecyclerView.Adapter<TabAdapter.MyViewHolder> {
     private Context mContext;

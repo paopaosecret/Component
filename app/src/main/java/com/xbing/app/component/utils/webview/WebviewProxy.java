@@ -1,10 +1,7 @@
 package com.xbing.app.component.utils.webview;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.WebResourceRequest;
@@ -15,6 +12,9 @@ import android.webkit.WebViewClient;
 
 import com.xbing.app.component.MyApplication;
 import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class WebviewProxy implements IWebviewProxy{
 

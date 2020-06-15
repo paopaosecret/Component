@@ -10,7 +10,7 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
     buildTypes {
@@ -23,14 +23,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    androidTestImplementation  rootProject.ext.dependencies["espresso-core"]
     implementation rootProject.ext.dependencies["design"]
     implementation rootProject.ext.dependencies["appcompat-v7"]
     implementation rootProject.ext.dependencies["recyclerview-v7"]
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation project(':basic:common')
     implementation 'com.google.code.gson:gson:2.2.4'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }

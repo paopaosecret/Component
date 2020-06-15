@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -15,6 +14,8 @@ import android.widget.TextView;
 import com.xbing.app.component.R;
 import com.xbing.app.component.service.LocalService;
 import com.xbing.app.component.ui.activity.BaseActivity;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by zhaobing04 on 2018/6/7.

@@ -3,8 +3,6 @@ package com.xbing.app.component.ui.activity.layer2;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.WebBackForwardList;
@@ -19,6 +17,9 @@ import com.example.lib_annotation.BindView;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.BaseActivity;
 import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class HybridActivity extends BaseActivity {
 

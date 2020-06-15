@@ -1,9 +1,8 @@
 package com.xbing.app.net.common.callback;
 
-import android.support.annotation.Nullable;
-
 import com.xbing.app.net.common.request.BaseRequest;
 
+import androidx.annotation.Nullable;
 import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -39,7 +38,9 @@ public abstract class Callback<T>
      *
      */
     public void onError(boolean isFromCache, Call call, @Nullable Response response, @Nullable Exception e) {
-        if (e != null) e.printStackTrace();
+        if (e != null) {
+            e.printStackTrace();
+        }
     }
 
     public void onBusinessError(String call) {}

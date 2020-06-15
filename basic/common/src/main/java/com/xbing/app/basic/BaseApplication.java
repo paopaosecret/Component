@@ -1,11 +1,10 @@
 package com.xbing.app.basic;
 
-import android.app.Application;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
-
 import com.xbing.app.basic.common.DimenUtil;
 import com.xbing.app.basic.common.LogUtil;
+
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
 /**
  * Created by Administrator on 2017/7/12.
@@ -22,7 +21,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     protected void attachBaseContext(android.content.Context base) {
         super.attachBaseContext(base);
-        android.support.multidex.MultiDex.install(this);
+        MultiDex.install(this);
     }
 
     @Override

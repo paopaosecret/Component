@@ -5,9 +5,11 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;

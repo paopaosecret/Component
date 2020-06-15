@@ -3,7 +3,6 @@ package com.xbing.app.component.ui.activity.layer2;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +15,7 @@ import com.xbing.app.component.R;
 import com.xbing.app.component.event.NewEvent;
 import com.xbing.app.component.ui.activity.BaseActivity;
 
+import androidx.annotation.RequiresApi;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;

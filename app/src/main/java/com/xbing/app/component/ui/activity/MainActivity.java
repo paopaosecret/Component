@@ -2,10 +2,6 @@ package com.xbing.app.component.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -24,6 +20,10 @@ import com.xbing.app.component.ui.fragment.Tab3Fragment;
 
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 public class MainActivity  extends BaseActivity implements View.OnTouchListener{
 //https://hyapp.58.com/app/school/open/articles/tohome
     private Tab1Fragment mTabFragment1;
@@ -32,7 +32,7 @@ public class MainActivity  extends BaseActivity implements View.OnTouchListener{
 
     private int mCurrentIndexTab = 1;
 
-    private android.support.v4.app.FragmentManager mFragmentManager;
+    private FragmentManager mFragmentManager;
     private FrameLayout mViewGroup;
 
     @BindView(R.id.rl_tab1)

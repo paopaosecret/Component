@@ -2,11 +2,9 @@ package com.xbing.app.component.ui.activity.layer2;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.api.InjectHelper;
@@ -16,6 +14,8 @@ import com.xbing.app.component.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by zhaobing04 on 2018/6/2.

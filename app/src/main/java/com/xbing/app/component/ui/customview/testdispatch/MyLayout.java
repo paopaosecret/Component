@@ -3,8 +3,6 @@ package com.xbing.app.component.ui.customview.testdispatch;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +13,9 @@ import android.widget.TextView;
 
 import com.xbing.app.basic.common.DpPxUtil;
 import com.xbing.app.component.R;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class MyLayout extends RelativeLayout {
     private String TAG = MyLayout.class.getSimpleName();

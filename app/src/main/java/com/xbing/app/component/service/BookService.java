@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.xbing.app.component.aidl.Book;
@@ -13,6 +12,8 @@ import com.xbing.app.component.aidl.BookManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 public class BookService extends Service {
 

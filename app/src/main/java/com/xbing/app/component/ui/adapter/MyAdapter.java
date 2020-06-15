@@ -1,8 +1,6 @@
 package com.xbing.app.component.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,9 @@ import android.widget.TextView;
 import com.xbing.app.component.R;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context mContext;

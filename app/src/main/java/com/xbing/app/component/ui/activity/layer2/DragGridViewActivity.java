@@ -3,10 +3,6 @@ package com.xbing.app.component.ui.activity.layer2;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 
@@ -16,6 +12,11 @@ import com.xbing.app.component.ui.adapter.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class DragGridViewActivity extends BaseActivity {
     private static volatile int index = 0;

@@ -2,13 +2,14 @@ package com.xbing.app.component.ui.activity.layer3;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.customview.testdispatch.MyLayout;
+
+import androidx.annotation.Nullable;
 
 public class ViewDispatchActivity extends Activity {
     private String TAG = ViewDispatchActivity.class.getSimpleName();

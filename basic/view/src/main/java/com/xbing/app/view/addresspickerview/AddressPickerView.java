@@ -2,10 +2,6 @@ package com.xbing.app.view.addresspickerview;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -14,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.xbing.app.view.R;
 
@@ -22,6 +19,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by zhaobing04 on 2018/6/8.
@@ -215,8 +216,9 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                     // 点到区的时候要判断有没有选择省份与城市
                     if (mSelectProvice != null && mSelectCity != null) {
                         for (AddressBean.AddressItemBean itemBean : mAddressBean.getDistrict()) {
-                            if (itemBean.getP().equals(mSelectCity.getI()))
+                            if (itemBean.getP().equals(mSelectCity.getI())){
                                 mRvData.add(itemBean);
+                            }
                         }
                     } else {
                         Toast.makeText(mContext, "请您先选择省份与城市", Toast.LENGTH_SHORT).show();

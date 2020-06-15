@@ -2,11 +2,12 @@ package com.xbing.app.component.ui.customview.testdispatch;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 @SuppressLint("AppCompatCustomView")
 public class CustomImageView extends ImageView {

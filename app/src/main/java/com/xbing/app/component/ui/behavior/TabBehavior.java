@@ -1,15 +1,16 @@
 package com.xbing.app.component.ui.behavior;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
 import com.xbing.app.component.R;
+
+import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TabBehavior extends CoordinatorLayout.Behavior<View> {
 
@@ -110,7 +111,6 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
      */
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-//        Log.e("TabBehavior", "onNestedScroll: dxConsumed = " + dxConsumed + ", dyConsumed = " + dyConsumed + ", dxUnconsumed = " + dxUnconsumed + ", dyUnconsumed = " + dyUnconsumed);
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
 
@@ -155,8 +155,9 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
                         @Override
                         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                             Log.e("TabBehavior", "first onScrolled: dx = " + dx + ", dy = " + dy);
-                            if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE)
+                            if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE) {
                                 child.scrollBy(dx, dy);
+                            }
                         }
                     });
 
@@ -164,8 +165,9 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
                         @Override
                         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                             Log.e("TabBehavior", "child onScrolled: dx = " + dx + ", dy = " + dy);
-                            if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE)
+                            if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE) {
                                 first.scrollBy(dx, dy);
+                            }
                         }
                     });
 
@@ -173,7 +175,9 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
 
             }
             Log.e("TabBehavior", "onScrolled: position = " + position + ", pos = " + pos);
-            if (position == -1) return;
+            if (position == -1) {
+                return;
+            }
 
             if (pos >= position){
                 child.setVisibility(View.VISIBLE);

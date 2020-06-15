@@ -1,17 +1,10 @@
 package com.xbing.app.component.ui.activity;
 
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -20,6 +13,9 @@ import android.widget.TextView;
 import com.xbing.app.component.R;
 
 import java.lang.reflect.Method;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by Administrator on 2017/9/8.

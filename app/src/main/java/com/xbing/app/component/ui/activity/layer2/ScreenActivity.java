@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +17,8 @@ import com.xbing.app.component.R;
 import com.xbing.app.component.utils.DisplayUtils;
 
 import java.lang.reflect.Method;
+
+import androidx.annotation.Nullable;
 
 public class ScreenActivity extends Activity {
 

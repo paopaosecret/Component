@@ -1,7 +1,5 @@
 package com.xbing.app.net.common.request;
 
-import android.support.annotation.NonNull;
-
 import com.xbing.app.net.BuildConfig;
 import com.xbing.app.net.common.OkHttpUtils;
 import com.xbing.app.net.common.cache.dbcache.CacheEntity;
@@ -30,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
+import androidx.annotation.NonNull;
 import okhttp3.Call;
 import okhttp3.Cookie;
 import okhttp3.FormBody;
@@ -138,7 +137,9 @@ public abstract class BaseRequest<R extends BaseRequest> {
      * 传入 -1 表示永久有效,默认值即为 -1
      */
     public R cacheTime(long cacheTime) {
-        if (cacheTime <= -1) cacheTime = CacheEntity.CACHE_NEVER_EXPIRE;
+        if (cacheTime <= -1) {
+            cacheTime = CacheEntity.CACHE_NEVER_EXPIRE;
+        }
         this.cacheTime = cacheTime;
         return (R) this;
     }
@@ -303,12 +304,15 @@ public abstract class BaseRequest<R extends BaseRequest> {
             return OkHttpUtils.getInstance().getOkHttpClient().newCall(request);
         } else {
             OkHttpClient.Builder newClientBuilder = OkHttpUtils.getInstance().getOkHttpClient().newBuilder();
-            if (readTimeOut > 0) newClientBuilder.readTimeout(readTimeOut, TimeUnit.MILLISECONDS);
-            if (writeTimeOut > 0)
+            if (readTimeOut > 0) {
+                newClientBuilder.readTimeout(readTimeOut, TimeUnit.MILLISECONDS);
+            }
+            if (writeTimeOut > 0) {
                 newClientBuilder.writeTimeout(writeTimeOut, TimeUnit.MILLISECONDS);
-            if (connectTimeOut > 0)
+            }
+            if (connectTimeOut > 0) {
                 newClientBuilder.connectTimeout(connectTimeOut, TimeUnit.MILLISECONDS);
-
+            }
             if (BuildConfig.DEBUG) {
                 //在Debug模式下，信任所有证书
                 try {
@@ -321,8 +325,9 @@ public abstract class BaseRequest<R extends BaseRequest> {
                 }
             }
 
-            if (cookies.size() > 0)
+            if (cookies.size() > 0) {
                 OkHttpUtils.getInstance().getCookieJar().addCookies(cookies);
+            }
             if (interceptors.size() > 0) {
                 for (Interceptor interceptor : interceptors) {
                     newClientBuilder.addInterceptor(interceptor);
@@ -369,11 +374,17 @@ public abstract class BaseRequest<R extends BaseRequest> {
     @SuppressWarnings("unchecked")
     public <T> void execute(Callback<T> callback) {
         callBack = callback;
-        if (callBack == null) callBack = callback;
+        if (callBack == null) {
+            callBack = callback;
+        }
 
         //请求之前获取缓存信息，添加缓存头和其他的公共头
-        if (cacheKey == null) cacheKey = createUrlFromParams(url, params.urlParamsMap);
-        if (cacheMode == null) cacheMode = CacheMode.DEFAULT;
+        if (cacheKey == null) {
+            cacheKey = createUrlFromParams(url, params.urlParamsMap);
+        }
+        if (cacheMode == null) {
+            cacheMode = CacheMode.DEFAULT;
+        }
         final CacheEntity<T> cacheEntity = (CacheEntity<T>) cacheManager.get(cacheKey);
         //检查缓存的有效时间,判断缓存是否已经过期
         if (cacheEntity != null && cacheEntity.checkExpire(cacheMode, cacheTime, System.currentTimeMillis())) {
@@ -457,7 +468,9 @@ public abstract class BaseRequest<R extends BaseRequest> {
     @SuppressWarnings("unchecked")
     private <T> void handleCache(Headers headers, T data) {
         //不需要缓存,直接返回
-        if (cacheMode == CacheMode.NO_CACHE) return;
+        if (cacheMode == CacheMode.NO_CACHE) {
+            return;
+        }
 
         CacheEntity<T> cache = HeaderParser.createCacheEntity(headers, data, cacheMode, cacheKey);
         if (cache == null) {

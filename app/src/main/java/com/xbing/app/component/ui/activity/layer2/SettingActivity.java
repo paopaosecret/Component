@@ -2,10 +2,11 @@ package com.xbing.app.component.ui.activity.layer2;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.BaseActivity;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by zhaobing04 on 2018/6/2.

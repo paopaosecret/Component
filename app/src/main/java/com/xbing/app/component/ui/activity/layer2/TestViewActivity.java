@@ -3,7 +3,6 @@ package com.xbing.app.component.ui.activity.layer2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,6 +10,8 @@ import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer3.CustomViewActivity;
 import com.xbing.app.component.ui.activity.layer3.ViewDispatchActivity;
 import com.xbing.app.component.utils.ToastUtils;
+
+import androidx.annotation.Nullable;
 
 public class TestViewActivity  extends Activity implements View.OnClickListener {
 

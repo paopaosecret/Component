@@ -102,8 +102,12 @@ public class CacheDao<T> extends BaseCacheDao<CacheEntity<T>> {
             e.printStackTrace();
         } finally {
             try {
-                if (headerOOS != null) headerOOS.close();
-                if (headerBAOS != null) headerBAOS.close();
+                if (headerOOS != null) {
+                    headerOOS.close();
+                }
+                if (headerBAOS != null) {
+                    headerBAOS.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -123,8 +127,12 @@ public class CacheDao<T> extends BaseCacheDao<CacheEntity<T>> {
             e.printStackTrace();
         } finally {
             try {
-                if (dataOOS != null) dataOOS.close();
-                if (dataBAOS != null) dataBAOS.close();
+                if (dataOOS != null) {
+                    dataOOS.close();
+                }
+                if (dataBAOS != null) {
+                    dataBAOS.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

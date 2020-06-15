@@ -1,8 +1,5 @@
 package com.xbing.app.component.ui.adapter;
 
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +9,12 @@ import android.widget.TextView;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.layer2.CoordinatorActivity;
-import com.xbing.app.component.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CoordinatorAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_TEXT = 1;
@@ -68,8 +67,9 @@ public class CoordinatorAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     Log.e("TabBehavior", "child onScrolled: dx = " + dx + ", dy = " + dy);
-                    if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE)
+                    if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_IDLE){
                         tabChild.scrollBy(dx, dy);
+                    }
                 }
             });
         }

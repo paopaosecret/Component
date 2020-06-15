@@ -3,17 +3,19 @@ package com.xbing.app.component.ui.customview.testcustom;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.xbing.app.basic.common.DpPxUtil;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 自定义View
  *
  * 一般重写onDraw()方法即可
  */
-public class LineTextView extends android.support.v7.widget.AppCompatTextView {
+public class LineTextView extends AppCompatTextView {
     Paint mPaint;
     public LineTextView(Context context) {
         super(context);
