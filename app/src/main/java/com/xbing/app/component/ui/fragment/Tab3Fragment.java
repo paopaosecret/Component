@@ -1,6 +1,7 @@
 package com.xbing.app.component.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xbing.app.component.R;
+import com.xbing.app.component.jetpack.JetpackActivity;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -79,6 +81,7 @@ public class Tab3Fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.tab3_fragment,container,false);
 
         Button btn = (Button) rootView.findViewById(R.id.btn_call);
+        Button jetpack = rootView.findViewById(R.id.btn_jetpack);
         textView = (TextView) rootView.findViewById(R.id.tv_result);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +89,13 @@ public class Tab3Fragment extends Fragment {
                 textView.setText("TAB3");
             }
         });
-
+        jetpack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), JetpackActivity.class);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 

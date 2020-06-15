@@ -25,7 +25,6 @@
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,6 +46,7 @@
         <activity android:name=".ui.activity.layer2.TestViewActivity"/>
         <activity android:name=".ui.activity.layer3.CustomViewActivity"/>
         <activity android:name=".ui.activity.layer2.ClassLoderActivity"/>
+        <activity android:name=".jetpack.JetpackActivity"/>
         <service android:name=".service.LocalService"/>
         <service
             android:name=".service.BookService"

@@ -33,6 +33,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -69,4 +73,18 @@ dependencies {
     }
     implementation rootProject.ext.dependencies["multidex"]
     androidTestImplementation  rootProject.ext.dependencies["multidex-instrumentation"]
+    // Room components
+    implementation rootProject.ext.dependencies["room-runtime"]
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    androidTestImplementation rootProject.ext.dependencies["room-testing"]
+
+    // Lifecycle components
+    implementation rootProject.ext.dependencies["lifecycle-extensions"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+
+    // UI
+    implementation rootProject.ext.dependencies["material"]
+
+    // Testing
+    androidTestImplementation rootProject.ext.dependencies["core-testing"]
 }

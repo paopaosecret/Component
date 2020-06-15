@@ -9,7 +9,6 @@ import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 /**
  * Created by Administrator on 2017/7/12.
  */
-
 public class MyApplication extends BaseApplication {
 
     private static final String TAG = MyApplication.class.getSimpleName();
