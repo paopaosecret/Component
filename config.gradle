@@ -35,5 +35,6 @@ ext {
             "lifecycle-compiler"        : 'androidx.lifecycle:lifecycle-compiler:2.2.0',
             "material"                  : 'com.google.android.material:material:1.0.0',
             "core-testing"              : 'androidx.arch.core:core-testing:2.1.0',
+            "zxing-core"                : 'com.google.zxing:core:3.3.0',
     ]
 }

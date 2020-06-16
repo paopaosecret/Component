@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.jetpack.JetpackActivity;
+import com.xbing.app.component.ui.zxing.qrcode.QrcodeActivity;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -93,6 +94,14 @@ public class Tab3Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), JetpackActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        rootView.findViewById(R.id.btn_qrcode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), QrcodeActivity.class);
                 startActivity(intent);
             }
         });

@@ -87,4 +87,7 @@ dependencies {
 
     // Testing
     androidTestImplementation rootProject.ext.dependencies["core-testing"]
+
+    //二维码
+    implementation rootProject.ext.dependencies["zxing-core"]
 }

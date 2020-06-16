@@ -1,5 +1,7 @@
 package com.xbing.app.component.ui.activity.layer2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +28,23 @@ import androidx.annotation.RequiresApi;
  */
 public class HybridActivity extends BaseActivity {
 
+    public final static String URL = "load_url";
+
+    protected String mUrl = "https://hyapp.58.com/app/school/open/articles/tohome";
+
+    public static Intent newIntent(Context context, String url, Class<? extends HybridActivity> clazz) {
+        Intent intent = new Intent(context, clazz);
+        intent.putExtra(URL, url);
+        return intent;
+    }
+
+    protected void getExtraData() {
+        String url = getIntent().getStringExtra(URL);
+        if(!TextUtils.isEmpty(url)){
+            mUrl = url;
+        }
+    }
+
     @BindView(R.id.webview_root)
     public WebView webView;
 
@@ -36,7 +55,7 @@ public class HybridActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hybrid);
         InjectHelper.inject(this);
-        
+        getExtraData();
         initWebView();
 
     }
@@ -57,7 +76,7 @@ public class HybridActivity extends BaseActivity {
         /**
          * 将商学院首页当做测试页面加载
          */
-        webView.loadUrl("https://hyapp.58.com/app/school/open/articles/tohome");
+        webView.loadUrl(mUrl);
     }
 
     private void initWebSetting() {
