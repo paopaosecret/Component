@@ -83,6 +83,7 @@ public class Tab3Fragment extends Fragment {
 
         Button btn = (Button) rootView.findViewById(R.id.btn_call);
         Button jetpack = rootView.findViewById(R.id.btn_jetpack);
+        Button instrumentation = rootView.findViewById(R.id.btn_instrumentation);
         textView = (TextView) rootView.findViewById(R.id.tv_result);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +104,12 @@ public class Tab3Fragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), QrcodeActivity.class);
                 startActivity(intent);
+            }
+        });
+        instrumentation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
         return rootView;

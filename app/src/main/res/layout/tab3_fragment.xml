@@ -27,10 +27,18 @@
         android:text="Jetpack"/>
 
     <Button
+    android:layout_marginTop="3dp"
+    android:id="@+id/btn_qrcode"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="二维码页面"/>
+
+    <Button
         android:layout_marginTop="3dp"
-        android:id="@+id/btn_qrcode"
+        android:id="@+id/btn_instrumentation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="二维码页面"/>
+        android:textAllCaps="false"
+        android:text="Instrumentation页面"/>
 
 </LinearLayout>
