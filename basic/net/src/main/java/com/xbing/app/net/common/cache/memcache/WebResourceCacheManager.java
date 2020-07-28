@@ -43,7 +43,8 @@ public class WebResourceCacheManager {
     /**
      * 缓存根路径
      */
-    private String cacheParentDir = Environment.getExternalStorageDirectory() + "/component/";
+//    private String cacheParentDir = Environment.getExternalStorageDirectory() + "/component/";
+    private String cacheParentDir ="data/data/com.xbing.app.component/";
 
     /**
      * 缓存资源路径
