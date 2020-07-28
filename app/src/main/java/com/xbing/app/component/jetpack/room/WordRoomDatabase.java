@@ -39,6 +39,7 @@ public abstract  class WordRoomDatabase  extends RoomDatabase {
             });
         }
     };
+
     public static WordRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (WordRoomDatabase.class) {

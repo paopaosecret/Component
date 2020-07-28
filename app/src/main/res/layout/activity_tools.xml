@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="返回结果"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CPU使用信息"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="采集内存信息"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cpu"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="网络使用信息"
+        app:layout_constraintTop_toBottomOf="@+id/btn_memory"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="电池使用信息"
+        app:layout_constraintTop_toBottomOf="@+id/btn_network"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_framerate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="采集帧率信息"
+        app:layout_constraintTop_toBottomOf="@+id/btn_battery"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

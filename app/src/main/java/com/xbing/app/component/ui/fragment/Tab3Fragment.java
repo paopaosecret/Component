@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.jetpack.JetpackActivity;
+import com.xbing.app.component.ui.activity.layer2.ToolsActivity;
 import com.xbing.app.component.ui.zxing.qrcode.QrcodeActivity;
 
 import androidx.annotation.Nullable;
@@ -83,7 +84,7 @@ public class Tab3Fragment extends Fragment {
 
         Button btn = (Button) rootView.findViewById(R.id.btn_call);
         Button jetpack = rootView.findViewById(R.id.btn_jetpack);
-        Button instrumentation = rootView.findViewById(R.id.btn_instrumentation);
+        Button tools = rootView.findViewById(R.id.btn_tools);
         textView = (TextView) rootView.findViewById(R.id.tv_result);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +107,12 @@ public class Tab3Fragment extends Fragment {
                 startActivity(intent);
             }
         });
-        instrumentation.setOnClickListener(new View.OnClickListener() {
+
+        tools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), ToolsActivity.class);
+                startActivity(intent);
             }
         });
         return rootView;

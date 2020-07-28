@@ -36,5 +36,6 @@ ext {
             "material"                  : 'com.google.android.material:material:1.0.0',
             "core-testing"              : 'androidx.arch.core:core-testing:2.1.0',
             "zxing-core"                : 'com.google.zxing:core:3.3.0',
+            "fastjson"                  : 'com.alibaba:fastjson:1.2.60',
     ]
 }

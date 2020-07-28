@@ -69,9 +69,9 @@ dependencies {
     implementation (project(path: ':basic:view')){
         exclude group: 'com.android.support'
     }
-//    implementation (project(path: ':basic:common')){
-//        exclude group: 'com.android.support'
-//    }
+    implementation (project(path: ':basic:common')){
+        exclude group: 'com.android.support'
+    }
     implementation (project(path: ':basic:net')){
         exclude group: 'com.android.support'
     }
@@ -95,11 +95,13 @@ dependencies {
     //二维码
     implementation rootProject.ext.dependencies["zxing-core"]
 
-    debugImplementation(name:'common-debug', ext:'aar'){
-        exclude group: 'com.android.support'
-    }
+//    debugImplementation(name:'common-debug', ext:'aar'){
+//        exclude group: 'com.android.support'
+//    }
+//
+//    releaseImplementation(name:'common-debug', ext:'aar'){
+//        exclude group: 'com.android.support'
+//    }
 
-    releaseImplementation(name:'common-debug', ext:'aar'){
-        exclude group: 'com.android.support'
-    }
+    implementation rootProject.ext.dependencies["fastjson"]
 }

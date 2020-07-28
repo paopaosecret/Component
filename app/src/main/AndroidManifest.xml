@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xbing.app.component">
-
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -53,6 +54,7 @@
         <activity android:name=".jetpack.JetpackActivity"/>
         <activity android:name=".ui.zxing.google.activity.CaptureActivity"/>
         <activity android:name=".ui.zxing.qrcode.QrcodeActivity"/>
+        <activity android:name=".ui.activity.layer2.ToolsActivity"/>
         <service android:name=".service.LocalService"/>
         <service
             android:name=".service.BookService"
