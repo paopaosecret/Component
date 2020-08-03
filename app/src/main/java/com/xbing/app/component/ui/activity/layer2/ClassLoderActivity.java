@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.test.dexclassloader.IMath;
@@ -59,13 +60,13 @@ public class ClassLoderActivity  extends Activity implements View.OnClickListene
         final File dexFile = new File(Environment.getExternalStorageDirectory().getPath() +
                 File.separator + "math_hotfix.jar");
         if(!dexFile.exists()){
-            ToastUtils.makeText(ClassLoderActivity.this, "文件不存在", ToastUtils.LENGTH_SHORT).show();
+            ToastUtils.makeText(ClassLoderActivity.this, "文件不存在", Toast.LENGTH_SHORT).show();
         }else{
             DexClassLoader dexClassLoader = new DexClassLoader(dexFile.getAbsolutePath(), getExternalCacheDir().getAbsolutePath(),null, getClassLoader());
             try{
                 Class clazz = dexClassLoader.loadClass("com.xbing.app.component.ui.test.dexclassloader.MathImplHotFix");
                 IMath m = (IMath) clazz.newInstance();
-                ToastUtils.makeText(ClassLoderActivity.this, m.divide(), ToastUtils.LENGTH_SHORT).show();
+                ToastUtils.makeText(ClassLoderActivity.this, m.divide(), Toast.LENGTH_SHORT).show();
             }catch (Exception e){
                 e.printStackTrace();
             }

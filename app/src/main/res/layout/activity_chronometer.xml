@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="#ffffff">
+
+    <com.xbing.app.component.ui.customview.countDownView.CountDownView android:id="@+id/chronometer"
+        android:format="hh:mm:ss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:paddingBottom="30dip"
+        android:paddingTop="30dip"
+        />
+
+    <Button android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重置">
+    </Button>
+
+    <Button android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂停">
+    </Button>
+
+    <Button android:id="@+id/resume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动">
+    </Button>
+
+    <Button android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止">
+        <requestFocus />
+    </Button>
+
+</LinearLayout>

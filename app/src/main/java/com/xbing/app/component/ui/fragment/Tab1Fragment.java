@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 
 import com.xbing.app.account.IAccountManager;
 import com.xbing.app.account.iml.AccountManagerIml;
+import com.xbing.app.account.iml.MovieService;
 import com.xbing.app.component.R;
+import com.xbing.app.component.ui.activity.layer2.ChronometerActivity;
+import com.xbing.app.component.ui.activity.layer2.DialogActivity;
 import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
@@ -93,58 +96,9 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         mFragmentManager = getActivity().getSupportFragmentManager();
         mAccountManager = new AccountManagerIml();
         View contentView = inflater.inflate(R.layout.tab1_fragment,container,false);
-        contentView.findViewById(R.id.btn_showdialog).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final CustomDialog customDialog = new CustomDialog(view.getContext());
-                customDialog.showDialog("title", "are you speak english?", "ok", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        customDialog.dismiss();
-                    }
-                });
-            }
-        });
 
-        contentView.findViewById(R.id.btn_showdialog2).setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  final CustomDialog customDialog = new CustomDialog(v.getContext());
-                  customDialog.showDialog("title", "are you speak english are you speak english are you speak englishare you speak english are you speak english are you speak english are you speak english are you speak english are you speak english",
-                          "ok ok ok ok ok ok", new View.OnClickListener() {
-                      @Override
-                      public void onClick(View view) {
-                          customDialog.dismiss();
-                      }
-                  }, "cancel cancel cancel cancel cancel", new View.OnClickListener() {
-                      @Override
-                      public void onClick(View v) {
-                          customDialog.dismiss();
-                      }
-                  });
-              }
-          });
-
-        contentView.findViewById(R.id.btn_showdialog3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final CustomDialog customDialog = new CustomDialog(v.getContext());
-                customDialog.showDialog("are you speak english are you speak english are you speak englishare you speak english are you speak english are you speak english are you speak english are you speak english are you speak english",
-                        "ok", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                customDialog.dismiss();
-                            }
-                        }, "cancel", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                customDialog.dismiss();
-                            }
-                        });
-            }
-        });
-
-
+        contentView.findViewById(R.id.btn_showdialog).setOnClickListener(this::onClick);
+        contentView.findViewById(R.id.btn_chronometer).setOnClickListener(this::onClick);
         contentView.findViewById(R.id.btn_loadfragment).setOnClickListener(this);
         contentView.findViewById(R.id.btn_test_http).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_exception).setOnClickListener(this);
@@ -160,6 +114,12 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch(view.getId()){
+            case R.id.btn_showdialog:
+                gotoDialogActivity();
+                break;
+            case R.id.btn_chronometer:
+                gotoChronometerActivity();
+                break;
             case R.id.btn_loadfragment:
                 int a = 100;
                 AddFragment fragment = new AddFragment();
@@ -206,6 +166,16 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    private void gotoChronometerActivity() {
+        Intent intent = new Intent(getActivity(), ChronometerActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoDialogActivity() {
+        Intent intent = new Intent(getActivity(), DialogActivity.class);
+        startActivity(intent);
+    }
+
     private void gotoViewActivity() {
         Intent intent = new Intent(getActivity(), ViewDispatchActivity.class);
         startActivity(intent);
@@ -233,7 +203,7 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
 
     private void getTopMovie(){
         //获取接口实例
-//        MovieService  movieService = retrofit.create(MovieService.class);
+//        MovieService movieService = retrofit.create(MovieService.class);
 //        //调用方法得到一个Call
 //        Call<MovieObject> call = movieService.getTop250(0,20);
 //        //进行网络请求

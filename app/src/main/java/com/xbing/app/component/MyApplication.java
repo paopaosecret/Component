@@ -1,5 +1,7 @@
 package com.xbing.app.component;
 
+import android.content.Context;
+
 import com.xbing.app.basic.BaseApplication;
 import com.xbing.app.basic.common.LogUtil;
 import com.xbing.app.net.common.OkHttpUtils;
@@ -12,10 +14,16 @@ import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 public class MyApplication extends BaseApplication {
 
     private static final String TAG = MyApplication.class.getSimpleName();
+    private static MyApplication application;
+
+    public static Context getContext(){
+        return application;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        application = this;
         LogUtil.i(TAG,TAG + "：onCreate()");
         OkHttpUtils.init(this);
         initWebResourceCacheManager();
@@ -29,4 +37,5 @@ public class MyApplication extends BaseApplication {
             }
         });
     }
+
 }

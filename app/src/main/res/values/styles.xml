@@ -16,4 +16,8 @@
         <item name="android:background">@android:color/holo_orange_light</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
+    <style name="PopupTopAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@animator/popup_in</item>
+        <item name="android:windowExitAnimation">@animator/popup_out</item>
+    </style>
 </resources>

@@ -34,6 +34,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activity.layer2.DialogActivity"/>
+        <activity android:name=".ui.activity.layer2.ChronometerActivity"/>
         <activity android:name=".ui.activity.layer2.ExceptionActivity"/>
         <activity android:name=".ui.activity.layer2.SettingActivity"/>
         <activity android:name=".ui.activity.layer2.TestLocalServiceActivity"/>
