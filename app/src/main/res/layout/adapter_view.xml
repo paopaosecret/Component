@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xbing.app.component.ui.customview.maodian.AnchorView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/anchorView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />

@@ -25,19 +25,13 @@
         android:text="倒计时"
         android:layout_gravity="bottom"/>
 
-    <Button
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_loadfragment"
-        android:text="更换当前fragment"/>
 
     <Button
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_test_http"
-        android:text="testokhttp"/>
+        android:id="@+id/btn_maodian"
+        android:text="锚点View"/>
 
     <Button
         android:layout_marginTop="5dp"

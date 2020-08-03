@@ -24,6 +24,7 @@ import com.xbing.app.component.utils.webview.WebviewProxy;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 
 /**
@@ -33,6 +34,7 @@ import androidx.fragment.app.Fragment;
 public class Tab2Fragment extends Fragment implements View.OnClickListener{
 
     private final static String TAG = Tab2Fragment.class.getSimpleName();
+    private FragmentManager mFragmentManager;
 
     @Override
     public void onAttach(Context context) {
@@ -87,7 +89,10 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,TAG +"->onCreateView");
+        mFragmentManager = getActivity().getSupportFragmentManager();
         View rootView = inflater.inflate(R.layout.tab2_fragment,container,false);
+
+        rootView.findViewById(R.id.btn_loadfragment).setOnClickListener(this);
         rootView.findViewById(R.id.btn_handler).setOnClickListener(this);
         rootView.findViewById(R.id.btn_address_picker_view).setOnClickListener(this);
         rootView.findViewById(R.id.btn_cache).setOnClickListener(this);
@@ -114,6 +119,17 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.btn_loadfragment:
+                int a = 100;
+                AddFragment fragment = new AddFragment();
+                Log.e("debugger TAG", "切换 AddFragment");
+                mFragmentManager.beginTransaction()
+                        .add(R.id.fl_content,fragment)
+                        .hide(this)
+                        .show(fragment)
+                        .addToBackStack(null)
+                        .commit();
+                break;
             case R.id.btn_handler:
                 mHandler.sendEmptyMessage(HandlerWhat.HANDLER_WHAT_TEST);
                 break;

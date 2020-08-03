@@ -16,6 +16,7 @@ import com.xbing.app.component.ui.activity.layer2.ChronometerActivity;
 import com.xbing.app.component.ui.activity.layer2.DialogActivity;
 import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
+import com.xbing.app.component.ui.activity.layer2.MaoDianActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
 import com.xbing.app.component.ui.activity.layer3.ViewDispatchActivity;
@@ -32,8 +33,6 @@ import androidx.fragment.app.FragmentManager;
 public class Tab1Fragment extends Fragment implements View.OnClickListener{
 
     private final static String TAG = Tab1Fragment.class.getSimpleName();
-
-    private FragmentManager mFragmentManager;
 
     private IAccountManager mAccountManager;
 
@@ -92,15 +91,13 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,TAG +"->onCreateView");
-
-        mFragmentManager = getActivity().getSupportFragmentManager();
         mAccountManager = new AccountManagerIml();
         View contentView = inflater.inflate(R.layout.tab1_fragment,container,false);
 
         contentView.findViewById(R.id.btn_showdialog).setOnClickListener(this::onClick);
         contentView.findViewById(R.id.btn_chronometer).setOnClickListener(this::onClick);
-        contentView.findViewById(R.id.btn_loadfragment).setOnClickListener(this);
-        contentView.findViewById(R.id.btn_test_http).setOnClickListener(this);
+
+        contentView.findViewById(R.id.btn_maodian).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_exception).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_local_service).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_js).setOnClickListener(this);
@@ -120,29 +117,10 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_chronometer:
                 gotoChronometerActivity();
                 break;
-            case R.id.btn_loadfragment:
-                int a = 100;
-                AddFragment fragment = new AddFragment();
-                Log.e("debugger TAG", "切换 AddFragment");
-                mFragmentManager.beginTransaction()
-                        .add(R.id.fl_content,fragment)
-                        .hide(this)
-                        .show(fragment)
-                        .addToBackStack(null)
-                        .commit();
-                break;
 
-            case R.id.btn_test_http:
-//                mAccountManager.getUsers(new RequestCallback() {
-//                    @Override
-//                    public void onRequestComplete(RequestResult result) {
-//                        if(result != null){
-//                            Log.d("http",result.toString()) ;
-//                        }
-//
-//                    }
-//                });
-                getTopMovie();
+
+            case R.id.btn_maodian:
+                goToMaoDianActivity();
                 break;
 
             case R.id.btn_go_to_exception:
@@ -164,6 +142,11 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
                 gotoViewActivity();
                 break;
         }
+    }
+
+    private void goToMaoDianActivity() {
+        Intent intent = new Intent(getActivity(), MaoDianActivity.class);
+        startActivity(intent);
     }
 
     private void gotoChronometerActivity() {

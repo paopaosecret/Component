@@ -57,6 +57,10 @@
         <activity android:name=".ui.zxing.google.activity.CaptureActivity"/>
         <activity android:name=".ui.zxing.qrcode.QrcodeActivity"/>
         <activity android:name=".ui.activity.layer2.ToolsActivity"/>
+        <activity android:name=".ui.activity.layer2.MaoDianActivity"/>
+        <activity android:name=".ui.activity.layer3.TabScrollActivity"/>
+        <activity android:name=".ui.activity.layer3.TabRecyclerActivity"/>
+        <activity android:name=".ui.activity.layer3.StickyActivity"/>
         <service android:name=".service.LocalService"/>
         <service
             android:name=".service.BookService"
