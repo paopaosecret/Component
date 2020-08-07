@@ -61,6 +61,7 @@
         <activity android:name=".ui.activity.layer3.TabScrollActivity"/>
         <activity android:name=".ui.activity.layer3.TabRecyclerActivity"/>
         <activity android:name=".ui.activity.layer3.StickyActivity"/>
+        <activity android:name=".ui.activity.layer2.RouterActivity"/>
         <service android:name=".service.LocalService"/>
         <service
             android:name=".service.BookService"

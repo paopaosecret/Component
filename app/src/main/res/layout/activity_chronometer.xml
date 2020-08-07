@@ -5,20 +5,20 @@
     android:layout_weight="1"
     android:background="#ffffff">
 
-    <com.xbing.app.component.ui.customview.countDownView.CountDownView android:id="@+id/chronometer"
+    <com.xbing.app.component.ui.customview.countDownView.CountDownView
+        android:id="@+id/chronometer"
         android:format="hh:mm:ss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:paddingBottom="30dip"
-        android:paddingTop="30dip"
-        />
+        android:paddingTop="30dip"/>
 
-    <Button android:id="@+id/reset"
+    <Button
+        android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="重置">
-    </Button>
+        android:text="重置"/>
 
     <Button android:id="@+id/pause"
         android:layout_width="wrap_content"

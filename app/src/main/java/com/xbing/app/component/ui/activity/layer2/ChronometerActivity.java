@@ -22,7 +22,7 @@ import androidx.annotation.RequiresApi;
 public class ChronometerActivity extends BaseActivity implements View.OnClickListener {
     private CountDownView mChronometer;
 
-    private int initTime=120;
+    private int initTime=5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

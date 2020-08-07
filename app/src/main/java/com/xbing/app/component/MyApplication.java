@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.xbing.app.basic.BaseApplication;
 import com.xbing.app.basic.common.LogUtil;
+import com.xbing.app.basic.router.HyRouter;
 import com.xbing.app.net.common.OkHttpUtils;
 import com.xbing.app.net.common.cache.memcache.ThreadPoolManager;
 import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
@@ -27,6 +28,7 @@ public class MyApplication extends BaseApplication {
         LogUtil.i(TAG,TAG + "：onCreate()");
         OkHttpUtils.init(this);
         initWebResourceCacheManager();
+        HyRouter.init();
     }
 
     private void initWebResourceCacheManager() {
