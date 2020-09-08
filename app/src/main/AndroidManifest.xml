@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.DUMP"/>
 
     <uses-permission android:name="android.permission.CAMERA" /> <!-- 摄像头权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
@@ -62,6 +63,7 @@
         <activity android:name=".ui.activity.layer3.TabRecyclerActivity"/>
         <activity android:name=".ui.activity.layer3.StickyActivity"/>
         <activity android:name=".ui.activity.layer2.RouterActivity"/>
+        <activity android:name=".ui.activity.layer2.ThridActivity"/>
         <service android:name=".service.LocalService"/>
         <service
             android:name=".service.BookService"
@@ -72,6 +74,7 @@
                 <action android:name="android.intent.action.BookService" />
             </intent-filter>
         </service>
+        <service android:name=".service.AppInfoService"/>
     </application>
 
 </manifest>

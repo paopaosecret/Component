@@ -44,6 +44,8 @@ android {
 }
 
 dependencies {
+
+    compileOnly fileTree(dir: 'lib', include: 'android.jar')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation  rootProject.ext.dependencies["espresso-core"]
     implementation rootProject.ext.dependencies["appcompat-v7"]

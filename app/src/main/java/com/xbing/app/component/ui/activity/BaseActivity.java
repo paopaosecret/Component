@@ -61,7 +61,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     /** 设置导航栏高度 **/
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setNavigationHeght() {

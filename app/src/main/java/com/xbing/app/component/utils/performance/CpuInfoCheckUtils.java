@@ -45,4 +45,36 @@ public class CpuInfoCheckUtils {
         }
         return rate;
     }
+
+    public static String getCpuRate(String packageName) {
+        String rate = "";
+        try {
+            String line;
+            Process p;
+            p = Runtime.getRuntime().exec("top -n 1");
+            StringBuffer sb = new StringBuffer("");
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while ((line = br.readLine()) != null) {
+                if (line.trim().length() < 1) {
+                    continue;
+                } else {
+                    // 以空格区分正则
+                    if(line.contains(packageName.substring(0,10))){
+                        String[] cpuInfo = line.split(" +");
+                        if(cpuInfo != null && cpuInfo.length > 10){
+                            sb.append("进程ID:" + cpuInfo[0] + "\n");
+                            sb.append("用户:" + cpuInfo[1] + "\n");
+                            return cpuInfo[9] + "%";
+                        }
+                    }
+                }
+            }
+            rate ="CPU使用情况：\n" + sb.toString();
+            Log.e(TAG, sb.toString());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "0";
+    }
 }

@@ -1,23 +1,36 @@
 package com.xbing.app.component.ui.activity.layer2;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
+import android.view.Surface;
 import android.view.View;
 import android.widget.TextView;
 
 import com.xbing.app.component.R;
+import com.xbing.app.component.service.AppInfoService;
 import com.xbing.app.component.ui.activity.BaseActivity;
+import com.xbing.app.component.ui.activity.MainActivity;
+import com.xbing.app.component.utils.ClipboardUtils;
 import com.xbing.app.component.utils.performance.BatteryCheckUtils;
 import com.xbing.app.component.utils.performance.CpuInfoCheckUtils;
+import com.xbing.app.component.utils.performance.Dump;
 import com.xbing.app.component.utils.performance.FrameCheckUtils;
 import com.xbing.app.component.utils.performance.MemoryChekcUtils;
 import com.xbing.app.component.utils.performance.NetworkCheckUtils;
+import com.xbing.app.component.utils.performance.PhoneInfoutils;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class ToolsActivity extends BaseActivity{
 
@@ -37,6 +50,7 @@ public class ToolsActivity extends BaseActivity{
         findViewById(R.id.btn_network).setOnClickListener(this);
         findViewById(R.id.btn_battery).setOnClickListener(this);
         findViewById(R.id.btn_framerate).setOnClickListener(this);
+        findViewById(R.id.btn_service).setOnClickListener(this);
     }
 
 
@@ -66,8 +80,45 @@ public class ToolsActivity extends BaseActivity{
 
                 break;
             case R.id.btn_framerate:
-                tvResult.setText(FrameCheckUtils.getFrameInfo(getPackageName()));
+                tvResult.setText(ClipboardUtils.getCopy(this));
+                Dump d = new Dump();
+                d.doDump(ToolsActivity.this);
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.DUMP)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    Log.d("FrameCheckUtils","DUMP no Permission");
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.DUMP)) {
+                        Log.d("FrameCheckUtils","DUMP no Permission, request1");
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.DUMP}, 129);
+                        return;
+                    }
+                    Log.d("FrameCheckUtils","DUMP no Permission, request2");
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.DUMP}, 129);
+                    return;
+                }
+                FrameCheckUtils.test3(getPackageName());
+                PhoneInfoutils.getSimeName(view.getContext());
+                PhoneInfoutils.getSystemVersion();
+                PhoneInfoutils.getDeviceBrand();
+                PhoneInfoutils.getSystemModel();
+//                tvResult.setText(FrameCheckUtils.getFrameInfo(getPackageName()));
+                FrameCheckUtils.test2(ToolsActivity.this);
+
                 break;
+
+            case R.id.btn_service:
+                startService();
+                break;
+        }
+    }
+
+    private void startService() {
+        // OPPO手机自动熄屏一段时间后，会启用系统自带的电量优化管理，禁止一切自启动的APP（用户设置的自启动白名单除外），需要try catch
+        try {
+            ClipboardUtils.copy(this, "abcdefghijklmnopqrstuvwxyz");
+            Intent getServiceTimeIntent = new Intent(this, AppInfoService.class);
+            startService(getServiceTimeIntent);
+        } catch (Exception e) {
+
         }
     }
 

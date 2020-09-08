@@ -76,4 +76,38 @@ public class MemoryChekcUtils {
 
         return sb.toString();
     }
+
+    /**
+     * 获取运行时应用内存情况
+     *
+     * @param context
+     * @return
+     */
+    public static String getMemoryRate(Context context) {
+        ActivityManager mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        //获得系统里正在运行的所有进程 
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcessesList = mActivityManager.getRunningAppProcesses();
+
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcessesList) {
+            // 占用的内存 
+            int[] pids = new int[]{runningAppProcessInfo.pid};
+            Debug.MemoryInfo[] memoryInfo = mActivityManager.getProcessMemoryInfo(pids);
+            Log.d(TAG, JSON.toJSONString(memoryInfo));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                try {
+                    Method method = Debug.MemoryInfo.class.getMethod("getTotalUss");
+                    int totalUss = (Integer)(method.invoke(memoryInfo[0], null));
+                    return (double)totalUss/1024.0 + "MB";
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return "0";
+    }
 }

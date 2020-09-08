@@ -58,4 +58,13 @@
         android:text="采集帧率信息"
         app:layout_constraintTop_toBottomOf="@+id/btn_battery"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动采集Service"
+        app:layout_constraintTop_toBottomOf="@+id/btn_framerate"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
