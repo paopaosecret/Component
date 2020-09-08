@@ -80,32 +80,12 @@ public class ToolsActivity extends BaseActivity{
 
                 break;
             case R.id.btn_framerate:
-                tvResult.setText(ClipboardUtils.getCopy(this));
-                Dump d = new Dump();
-                d.doDump(ToolsActivity.this);
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.DUMP)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    Log.d("FrameCheckUtils","DUMP no Permission");
-                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.DUMP)) {
-                        Log.d("FrameCheckUtils","DUMP no Permission, request1");
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.DUMP}, 129);
-                        return;
-                    }
-                    Log.d("FrameCheckUtils","DUMP no Permission, request2");
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.DUMP}, 129);
-                    return;
-                }
-                FrameCheckUtils.test3(getPackageName());
-                PhoneInfoutils.getSimeName(view.getContext());
-                PhoneInfoutils.getSystemVersion();
-                PhoneInfoutils.getDeviceBrand();
-                PhoneInfoutils.getSystemModel();
-//                tvResult.setText(FrameCheckUtils.getFrameInfo(getPackageName()));
-                FrameCheckUtils.test2(ToolsActivity.this);
-
+                Log.d("ToolsActivity", ClipboardUtils.getCopy(this));
+                tvResult.setText(FrameCheckUtils.getVsyncRate(ToolsActivity.this));
                 break;
 
             case R.id.btn_service:
+                ClipboardUtils.copy(this, "abcdefghijklmnopqrstuvwxyz");
                 startService();
                 break;
         }
@@ -114,7 +94,6 @@ public class ToolsActivity extends BaseActivity{
     private void startService() {
         // OPPO手机自动熄屏一段时间后，会启用系统自带的电量优化管理，禁止一切自启动的APP（用户设置的自启动白名单除外），需要try catch
         try {
-            ClipboardUtils.copy(this, "abcdefghijklmnopqrstuvwxyz");
             Intent getServiceTimeIntent = new Intent(this, AppInfoService.class);
             startService(getServiceTimeIntent);
         } catch (Exception e) {

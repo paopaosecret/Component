@@ -77,10 +77,11 @@ public class FrameCheckUtils {
     }
 
 
-    public static void test2(Activity context){
+    public static String getVsyncRate(Activity context){
         Display display = context.getWindowManager().getDefaultDisplay();
         float refreshRate = display.getRefreshRate();
         Log.d("FrameCheckUtils", "refreshRate:" + refreshRate);
+        return refreshRate + "";
     }
 
     public static void test3(String packageName){
