@@ -106,5 +106,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_test_thrid"
             android:text="第三方页面"/>
+
+        <Button
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_package"
+            android:text="包管理页面"/>
     </LinearLayout>
 </ScrollView>

@@ -8,6 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class AppUtils {
     /**
      * 获取应用程序名称
@@ -98,5 +103,26 @@ public class AppUtils {
         BitmapDrawable bd = (BitmapDrawable) d;
         Bitmap bm = bd.getBitmap();
         return bm;
+    }
+
+    public static String getProcessName(){
+        BufferedReader mBufferedReader = null;
+        try {
+            File file = new File("/proc/self/cmdline");
+            mBufferedReader = new BufferedReader(new FileReader(file));
+            return mBufferedReader.readLine().trim();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (mBufferedReader != null) {
+                try {
+                    mBufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mBufferedReader = null;
+            }
+        }
     }
 }

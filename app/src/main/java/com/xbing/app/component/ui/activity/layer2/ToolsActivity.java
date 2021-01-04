@@ -1,36 +1,26 @@
 package com.xbing.app.component.ui.activity.layer2;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
-import android.view.Surface;
 import android.view.View;
 import android.widget.TextView;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.service.AppInfoService;
 import com.xbing.app.component.ui.activity.BaseActivity;
-import com.xbing.app.component.ui.activity.MainActivity;
 import com.xbing.app.component.utils.ClipboardUtils;
-import com.xbing.app.component.utils.performance.BatteryCheckUtils;
+import com.xbing.app.component.utils.performance.AppUtils;
+import com.xbing.app.component.utils.performance.StartCheckUtils;
 import com.xbing.app.component.utils.performance.CpuInfoCheckUtils;
-import com.xbing.app.component.utils.performance.Dump;
 import com.xbing.app.component.utils.performance.FrameCheckUtils;
 import com.xbing.app.component.utils.performance.MemoryChekcUtils;
 import com.xbing.app.component.utils.performance.NetworkCheckUtils;
-import com.xbing.app.component.utils.performance.PhoneInfoutils;
 
 import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 public class ToolsActivity extends BaseActivity{
 
@@ -51,12 +41,13 @@ public class ToolsActivity extends BaseActivity{
         findViewById(R.id.btn_battery).setOnClickListener(this);
         findViewById(R.id.btn_framerate).setOnClickListener(this);
         findViewById(R.id.btn_service).setOnClickListener(this);
+        findViewById(R.id.btn_process_name).setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_cpu:
                 tvResult.setText(CpuInfoCheckUtils.getProcessCpuRate(getPackageName()));
                 break;
@@ -69,13 +60,13 @@ public class ToolsActivity extends BaseActivity{
             case R.id.btn_battery:
 //                tvResult.setText("电池功能未上线");
                 tvResult.setText("");
-                registerReceiver(mBatInfoReveiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-                if(BatteryCheckUtils.checkAppUsagePermission(view.getContext())){
-                    StringBuffer sb  = new StringBuffer(tvResult.getText());
-                    sb.append("\n" + BatteryCheckUtils.getUsageInfo(view.getContext()));
+//                registerReceiver(mBatInfoReveiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+                if (StartCheckUtils.checkAppUsagePermission(view.getContext())) {
+                    StringBuffer sb = new StringBuffer(tvResult.getText());
+                    sb.append("\n" + StartCheckUtils.getUsageInfo(view.getContext()));
                     tvResult.setText(sb.toString());
-                }else{
-                    BatteryCheckUtils.requestAppUsagePermission(view.getContext());
+                } else {
+                    StartCheckUtils.requestAppUsagePermission(view.getContext());
                 }
 
                 break;
@@ -88,8 +79,13 @@ public class ToolsActivity extends BaseActivity{
                 ClipboardUtils.copy(this, "abcdefghijklmnopqrstuvwxyz");
                 startService();
                 break;
+
+            case R.id.btn_process_name:
+                tvResult.setText(AppUtils.getProcessName());
+                break;
         }
     }
+
 
     private void startService() {
         // OPPO手机自动熄屏一段时间后，会启用系统自带的电量优化管理，禁止一切自启动的APP（用户设置的自启动白名单除外），需要try catch
@@ -127,6 +123,9 @@ public class ToolsActivity extends BaseActivity{
     @Override
     protected void onStop() {
         super.onStop();
-        unregisterReceiver(mBatInfoReveiver);
+        try {
+            unregisterReceiver(mBatInfoReveiver);
+        }catch (Exception e){}
+
     }
 }

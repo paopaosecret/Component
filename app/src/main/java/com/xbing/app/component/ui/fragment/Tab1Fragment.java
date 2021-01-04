@@ -19,6 +19,7 @@ import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
 import com.xbing.app.component.ui.activity.layer2.MaoDianActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
+import com.xbing.app.component.ui.activity.layer2.ViewPageActivity;
 import com.xbing.app.component.ui.activity.layer3.ViewDispatchActivity;
 import com.xbing.app.component.ui.customview.CustomDialog;
 
@@ -104,6 +105,7 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         contentView.findViewById(R.id.btn_go_to_screen_test).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_screen_test).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_view_test).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_viewpage).setOnClickListener(this);
         return  contentView;
 
     }
@@ -141,7 +143,16 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_go_to_view_test:
                 gotoViewActivity();
                 break;
+
+            case R.id.btn_go_to_viewpage:
+                gotoViewPageActivity();
+                break;
         }
+    }
+
+    private void gotoViewPageActivity() {
+        Intent intent = new Intent(getActivity(), ViewPageActivity.class);
+        startActivity(intent);
     }
 
     private void goToMaoDianActivity() {

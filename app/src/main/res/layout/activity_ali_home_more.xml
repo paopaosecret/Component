@@ -5,6 +5,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_gravity="right|center_vertical"
+        android:gravity="center_vertical|right"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cardview_light_background"
+            android:text="编辑"
+            android:textSize="18sp"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:background="@color/statusBarColor"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/rl_edit_header"/>
+
     <com.xbing.app.component.ui.customview.maodian.CustomScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -20,6 +42,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/ll_no_edit_header"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:background="#ccc"
@@ -47,8 +70,7 @@
                     android:id="@+id/container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp" />
+                    android:orientation="vertical"/>
 
             </LinearLayout>
 
@@ -64,8 +86,6 @@
                 app:tabMode="scrollable"
                 app:tabSelectedTextColor="@color/colorPrimary" />
         </FrameLayout>
-
-
     </com.xbing.app.component.ui.customview.maodian.CustomScrollView>
 
 </LinearLayout>

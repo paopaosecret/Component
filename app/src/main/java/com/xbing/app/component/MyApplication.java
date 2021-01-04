@@ -2,6 +2,7 @@ package com.xbing.app.component;
 
 import android.content.Context;
 
+import com.didichuxing.doraemonkit.DoraemonKit;
 import com.xbing.app.basic.BaseApplication;
 import com.xbing.app.basic.common.LogUtil;
 import com.xbing.app.basic.router.HyRouter;
@@ -29,6 +30,7 @@ public class MyApplication extends BaseApplication {
         OkHttpUtils.init(this);
         initWebResourceCacheManager();
         HyRouter.init();
+        DoraemonKit.install(this);
     }
 
     private void initWebResourceCacheManager() {

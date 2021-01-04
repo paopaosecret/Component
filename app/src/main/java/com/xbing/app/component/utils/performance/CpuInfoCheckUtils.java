@@ -1,5 +1,7 @@
 package com.xbing.app.component.utils.performance;
 
+import android.os.Process;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -17,23 +19,38 @@ public class CpuInfoCheckUtils {
         String rate = "";
         try {
             String line;
-            Process p;
+            java.lang.Process p;
             p = Runtime.getRuntime().exec("top -n 1");
             StringBuffer sb = new StringBuffer("");
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            int cpuIndex = -1;
             while ((line = br.readLine()) != null) {
                 if (line.trim().length() < 1) {
                     continue;
                 } else {
                     // 以空格区分正则
-                    if(line.contains(packageName.substring(0,10))){
-                        String[] cpuInfo = line.split(" +");
-                        if(cpuInfo != null && cpuInfo.length > 10){
-                            sb.append("进程ID:" + cpuInfo[0] + "\n");
-                            sb.append("用户:" + cpuInfo[1] + "\n");
-                            sb.append("CPU使用率：" + cpuInfo[9] + "\n");
-                            break;
+                    line = line.trim();
+                    if (TextUtils.isEmpty(line)) {
+                        continue;
+                    }
+                    int tempIndex = getCPUIndex(line);
+                    if (tempIndex != -1) {
+                        cpuIndex = tempIndex;
+                        continue;
+                    }
+                    if (line.startsWith(String.valueOf(Process.myPid()))) {
+                        if (cpuIndex == -1) {
+                            continue;
                         }
+                        String[] param = line.split("\\s+");
+                        if (param.length <= cpuIndex) {
+                            continue;
+                        }
+                        String cpu = param[cpuIndex];
+                        if (cpu.endsWith("%")) {
+                            cpu = cpu.substring(0, cpu.lastIndexOf("%"));
+                        }
+                        rate = Float.parseFloat(cpu) / Runtime.getRuntime().availableProcessors() + "";
                     }
                 }
             }
@@ -46,11 +63,24 @@ public class CpuInfoCheckUtils {
         return rate;
     }
 
+
+    private static int getCPUIndex(String line) {
+        if (line.contains("CPU")) {
+            String[] titles = line.split("\\s+");
+            for (int i = 0; i < titles.length; i++) {
+                if (titles[i].contains("CPU")) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
     public static String getCpuRate(String packageName) {
         String rate = "";
         try {
             String line;
-            Process p;
+            java.lang.Process p;
             p = Runtime.getRuntime().exec("top -n 1");
             StringBuffer sb = new StringBuffer("");
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));

@@ -8,6 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class AppUtils {
 
 
@@ -26,6 +31,8 @@ public class AppUtils {
         }
         return null;
     }
+    
+
 
     /**
      * [获取应用程序版本名称信息]

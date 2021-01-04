@@ -41,7 +41,6 @@ public class MemoryChekcUtils {
             int[] pids = new int[]{runningAppProcessInfo.pid};
             Debug.MemoryInfo[] memoryInfo = mActivityManager.getProcessMemoryInfo(pids);
             Log.d(TAG, JSON.toJSONString(memoryInfo));
-
             Map<String, String> stats = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 stats = memoryInfo[0].getMemoryStats();

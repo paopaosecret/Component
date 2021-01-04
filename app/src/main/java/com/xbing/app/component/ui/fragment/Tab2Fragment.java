@@ -18,6 +18,7 @@ import com.xbing.app.component.ui.activity.layer2.ClassLoderActivity;
 import com.xbing.app.component.ui.activity.layer2.CoordinatorActivity;
 import com.xbing.app.component.ui.activity.layer2.DragGridViewActivity;
 import com.xbing.app.component.ui.activity.layer2.HybridActivity;
+import com.xbing.app.component.ui.activity.layer2.PackageManagerActivity;
 import com.xbing.app.component.ui.activity.layer2.RouterActivity;
 import com.xbing.app.component.ui.activity.layer2.RxJavaActivity;
 import com.xbing.app.component.ui.activity.layer2.TestViewActivity;
@@ -107,6 +108,7 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
         rootView.findViewById(R.id.btn_test_classloader).setOnClickListener(this);
         rootView.findViewById(R.id.btn_test_router).setOnClickListener(this);
         rootView.findViewById(R.id.btn_test_thrid).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_package).setOnClickListener(this);
         return rootView;
     }
 
@@ -172,7 +174,15 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_test_thrid:
                 gotoThridActivity();
                 break;
+            case R.id.btn_package:
+                gotoPackageActivity();
+                break;
         }
+    }
+
+    private void gotoPackageActivity() {
+        Intent intent = new Intent(this.getContext(), PackageManagerActivity.class);
+        startActivity(intent);
     }
 
     private void gotoThridActivity() {

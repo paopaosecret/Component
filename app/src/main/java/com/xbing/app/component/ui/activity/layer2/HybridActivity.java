@@ -18,6 +18,7 @@ import com.example.api.InjectHelper;
 import com.example.lib_annotation.BindView;
 import com.xbing.app.component.R;
 import com.xbing.app.component.ui.activity.BaseActivity;
+import com.xbing.app.component.utils.AndroidBug5497Workaround;
 import com.xbing.app.net.common.cache.memcache.WebResourceCacheManager;
 
 import androidx.annotation.Nullable;
@@ -30,8 +31,10 @@ public class HybridActivity extends BaseActivity {
 
     public final static String URL = "load_url";
 
-    protected String mUrl = "https://hyapp.58.com/app/school/open/articles/tohome";
+//    protected String mUrl = "https://hyapp.58.com/app/school/open/articles/tohome";
+    protected String mUrl = "https://javiercbk.github.io/json_to_dart/";
 
+//    protected String mUrl = "https://hyba.58.com/assistant/index?from=zjs_sjtgdwz";
     public static Intent newIntent(Context context, String url, Class<? extends HybridActivity> clazz) {
         Intent intent = new Intent(context, clazz);
         intent.putExtra(URL, url);
@@ -57,7 +60,7 @@ public class HybridActivity extends BaseActivity {
         InjectHelper.inject(this);
         getExtraData();
         initWebView();
-
+        AndroidBug5497Workaround.assistActivity(this);
     }
 
     private void initWebView() {

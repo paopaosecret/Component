@@ -8,6 +8,7 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Choreographer;
 import android.view.Display;
 
 import java.io.BufferedReader;
@@ -25,6 +26,7 @@ public class FrameCheckUtils {
     private static long totalFrames = 0;  //统计的总帧数
     private static float lostFrameRate = 0; //丢帧率
     private static float fps; //fps值
+
 
     public static String getFrameInfo(String packageName) {
         String gfxCMD = "dumpsys SurfaceFlinger --latency com.xbing.app.component/com.xbing.app.component.ui.activity.layer2.CoordinatorActivity#0";
@@ -77,6 +79,11 @@ public class FrameCheckUtils {
     }
 
 
+    /**
+     * 获取默认Vsync 刷新频率
+     * @param context
+     * @return
+     */
     public static String getVsyncRate(Activity context){
         Display display = context.getWindowManager().getDefaultDisplay();
         float refreshRate = display.getRefreshRate();

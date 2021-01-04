@@ -24,8 +24,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     /** 是否沉浸状态栏 **/
     private boolean isSetStatusBar = true;
+
     /** 是否允许全屏 **/
     private boolean mAllowFullScreen = true;
+
     /** 是否禁止旋转屏幕 **/
     private boolean isAllowScreenRoate = true;
     /** 是否使用特殊的标题栏背景颜色，android5.0以上可以设置状态栏背景色，如果不使用则使用透明色值 **/
