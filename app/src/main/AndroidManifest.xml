@@ -19,6 +19,20 @@
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
 
+    <!-- TODO Step 2 TRTC集成添加权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         tools:replace="android:name"
         android:name=".MyApplication"
@@ -68,6 +82,10 @@
         <activity android:name=".ui.activity.layer2.PackageManagerActivity"/>
         <activity android:name=".flutter.FlutterActivity"/>
         <activity android:name=".ui.activity.layer2.ViewPageActivity"/>
+        <activity android:name=".ui.activity.layer2.TrtcActivity"/>
+        <activity
+            android:name="com.tencent.rtmp.video.TXScreenCapture$TXScreenCaptureAssistantActivity"
+            android:theme="@android:style/Theme.Translucent"/>
         <service android:name=".service.LocalService"/>
         <service
             android:name=".service.BookService"

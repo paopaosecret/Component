@@ -224,3 +224,6 @@
 -keep class com.google.gson.**{*;}
 -keep interface com.google.gson.**{*;}
 #        。。。。。。
+
+#TRTC集成设置混淆规则
+-keep class com.tencent.** { *; }

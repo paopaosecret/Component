@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_marginTop="25dp"
+                android:id="@+id/et_roomid"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="请输入房间id"
+                android:text="179131961"
+                />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/et_userid"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="请输入用户id"
+                android:text="abc987fsa"
+                />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+
+                    android:id="@+id/btn_enterroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="进入房间"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_result"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_exitRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退出房间"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_cpu"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+
+                    android:id="@+id/btn_startPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开始直播"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_result"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_stopPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关闭直播"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_cpu"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+
+                    android:id="@+id/btn_addRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="观看直播"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_result"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_exitAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退出观看"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_cpu"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_screenShared"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="屏幕共享"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_cpu"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_exitScreenShared"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退出共享"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_cpu"
+                    tools:ignore="MissingConstraints" />
+
+            </LinearLayout>
+            <com.tencent.rtmp.ui.TXCloudVideoView
+                android:id="@+id/trtc_tc_cloud_view_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+<!--    </ScrollView>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

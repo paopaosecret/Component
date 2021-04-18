@@ -28,7 +28,7 @@ public class ScreenActivity extends Activity {
     @BindView(R.id.btn_test)
     public Button btnTest;
 
-    @BindView(R.id.btn_test1)
+    @BindView(R.id.btn_enterroom)
     public Button btnTest1;
 
     @Override
