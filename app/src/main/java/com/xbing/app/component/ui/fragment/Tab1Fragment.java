@@ -16,6 +16,8 @@ import com.xbing.app.component.ui.activity.layer2.ChronometerActivity;
 import com.xbing.app.component.ui.activity.layer2.DialogActivity;
 import com.xbing.app.component.ui.activity.layer2.ExceptionActivity;
 import com.xbing.app.component.ui.activity.layer2.JavaJsInteractiveActivity;
+import com.xbing.app.component.ui.activity.layer2.LivePage2Activity;
+import com.xbing.app.component.ui.activity.layer2.LivePageActivity;
 import com.xbing.app.component.ui.activity.layer2.MaoDianActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
@@ -106,6 +108,8 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         contentView.findViewById(R.id.btn_go_to_screen_test).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_view_test).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_viewpage).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_live_page).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_go_to_live_page2).setOnClickListener(this);
         return  contentView;
 
     }
@@ -147,7 +151,23 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_go_to_viewpage:
                 gotoViewPageActivity();
                 break;
+            case R.id.btn_go_to_live_page:
+                gotoLivePageActivity();
+                break;
+            case R.id.btn_go_to_live_page2:
+                gotoLivePage2Activity();
+                break;
         }
+    }
+
+    private void gotoLivePage2Activity() {
+        Intent intent = new Intent(getActivity(), LivePage2Activity.class);
+        startActivity(intent);
+    }
+
+    private void gotoLivePageActivity() {
+        Intent intent = new Intent(getActivity(), LivePageActivity.class);
+        startActivity(intent);
     }
 
     private void gotoViewPageActivity() {
