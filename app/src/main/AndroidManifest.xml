@@ -85,6 +85,7 @@
         <activity android:name=".ui.activity.layer2.TrtcActivity"/>
         <activity android:name=".ui.activity.layer2.LivePageActivity"/>
         <activity android:name=".ui.activity.layer2.LivePage2Activity"/>
+        <activity android:name=".ui.activity.layer2.LivePage3Activity"/>
         <activity
             android:name="com.tencent.rtmp.video.TXScreenCapture$TXScreenCaptureAssistantActivity"
             android:theme="@android:style/Theme.Translucent"/>

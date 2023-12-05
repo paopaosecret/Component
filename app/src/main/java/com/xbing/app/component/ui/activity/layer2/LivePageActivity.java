@@ -18,6 +18,9 @@ import com.xbing.app.component.ui.adapter.live.recycleview.RoomRecyclerViewAdapt
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 使用 RecyclerView 实现垂直滑动
+ */
 public class LivePageActivity extends AppCompatActivity {
 
     protected List<LiveRoomInfo>      mVideos = new ArrayList<>();

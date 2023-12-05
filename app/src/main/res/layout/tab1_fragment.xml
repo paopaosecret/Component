@@ -87,4 +87,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_go_to_live_page2"
         android:text="直播滑动_ViewPage"/>
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_go_to_live_page3"
+        android:text="直播滑动_ViewPage2"/>
 </LinearLayout>

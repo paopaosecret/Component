@@ -15,11 +15,11 @@ import com.xbing.app.component.bean.LiveRoomInfo;
 
 import java.util.List;
 
-public class VerticalPagerAdapter extends RecyclerView.Adapter<VerticalPagerAdapter.ViewHolder> {
+public class VerticalRecyclerViewAdapter extends RecyclerView.Adapter<VerticalRecyclerViewAdapter.ViewHolder> {
 
     private List<LiveRoomInfo> roomList;
 
-    public VerticalPagerAdapter(List<LiveRoomInfo> list) {
+    public VerticalRecyclerViewAdapter(List<LiveRoomInfo> list) {
         this.roomList = list;
     }
 

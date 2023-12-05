@@ -8,15 +8,18 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.xbing.app.component.R;
 import com.xbing.app.component.bean.LiveRoomInfo;
-import com.xbing.app.component.ui.adapter.live.viewpager.VerticalPagerAdapter;
+import com.xbing.app.component.ui.adapter.live.viewpager.VerticalRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 使用 ViewPager2 + RecyclerView.Adapter 实现垂直滑动
+ */
 public class LivePage2Activity extends AppCompatActivity {
     private   ViewPager2         mViewPager;
-    protected List<LiveRoomInfo> mVideos = new ArrayList<>();
-    protected VerticalPagerAdapter mAdapter;
+    protected List<LiveRoomInfo>          mVideos = new ArrayList<>();
+    protected VerticalRecyclerViewAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class LivePage2Activity extends AppCompatActivity {
 
     private void initView() {
         mViewPager = findViewById(R.id.view_pager2);
-        mAdapter = new VerticalPagerAdapter(mVideos);
+        mAdapter = new VerticalRecyclerViewAdapter(mVideos);
         mViewPager.setAdapter(mAdapter);
 
         mViewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
