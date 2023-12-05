@@ -126,4 +126,5 @@ dependencies {
 
     //TODO Step1 添加aar依赖
     implementation 'com.tencent.liteav:LiteAVSDK_TRTC:latest.release'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
 }
