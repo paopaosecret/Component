@@ -1,12 +1,12 @@
-package com.xbing.app.db.facede;
+package com.xbing.app.db.custom.facede;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.xbing.app.db.annotion.DbFiled;
-import com.xbing.app.db.annotion.DbTable;
+import com.xbing.app.db.custom.annotion.DbFiled;
+import com.xbing.app.db.custom.annotion.DbTable;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

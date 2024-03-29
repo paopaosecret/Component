@@ -1,8 +1,8 @@
-package com.xbing.app.db.entity;
+package com.xbing.app.db.custom.entity;
 
 
-import com.xbing.app.db.annotion.DbFiled;
-import com.xbing.app.db.annotion.DbTable;
+import com.xbing.app.db.custom.annotion.DbFiled;
+import com.xbing.app.db.custom.annotion.DbTable;
 
 /**
  * Created by zhaobing04 on 2018/5/19.

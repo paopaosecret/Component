@@ -20,6 +20,7 @@ import com.xbing.app.component.ui.activity.layer2.LivePage2Activity;
 import com.xbing.app.component.ui.activity.layer2.LivePage3Activity;
 import com.xbing.app.component.ui.activity.layer2.LivePageActivity;
 import com.xbing.app.component.ui.activity.layer2.MaoDianActivity;
+import com.xbing.app.component.ui.activity.layer2.PageAnimationOutActivity;
 import com.xbing.app.component.ui.activity.layer2.ScreenActivity;
 import com.xbing.app.component.ui.activity.layer2.TestLocalServiceActivity;
 import com.xbing.app.component.ui.activity.layer2.ViewPageActivity;
@@ -112,6 +113,7 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
         contentView.findViewById(R.id.btn_go_to_live_page).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_live_page2).setOnClickListener(this);
         contentView.findViewById(R.id.btn_go_to_live_page3).setOnClickListener(this);
+        contentView.findViewById(R.id.btn_page_animation).setOnClickListener(this);
         return  contentView;
 
     }
@@ -162,7 +164,15 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener{
             case R.id.btn_go_to_live_page3:
                 gotoLivePage3Activity();
                 break;
+            case R.id.btn_page_animation:
+                gotoPageAnimationOutActivity();
+                break;
         }
+    }
+
+    private void gotoPageAnimationOutActivity() {
+        Intent intent = new Intent(getActivity(), PageAnimationOutActivity.class);
+        startActivity(intent);
     }
 
     private void gotoLivePage3Activity() {

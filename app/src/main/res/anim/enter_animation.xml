@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:duration="500"
+    tools:ignore="MissingDefaultResource">
+
+    <!--
+    1.<translate>`：定义平移动画。可以让视图在 X 轴和 Y 轴上移动。
+    2.<scale>`：定义缩放动画。可以让视图在 X 轴和 Y 轴上缩放。
+    3.<rotate>`：定义旋转动画。可以让视图围绕一个点旋转。
+    4.<alpha>`：定义透明度动画。可以让视图的透明度发生变化。-->
+
+    <!--android:fromXDelta="0"：动画开始时，视图从原始位置（即X轴上的0点）开始。
+        android:toXDelta="-100%p"：动画结束时，视图会平移到相对于其原始位置的左边100%的位置。这里的%p表示相对于视图的宽度。-->
+    <translate
+        android:fromXDelta="100%p"
+        android:toXDelta="0"
+        android:fromYDelta="0"
+        android:toYDelta="0"
+        />
+
+    <!--
+        android:fromAlpha：动画开始时视图的透明度。取值范围为 0.0（完全透明）到 1.0（完全不透明）。
+        android:toAlpha：动画结束时视图的透明度。取值范围为 0.0（完全透明）到 1.0（完全不透明）。 -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        />
+
+    <!--android:fromXScale="1.0"：动画开始时，视图在 X 轴上的缩放比例为 1.0，即原始大小。
+        android:toXScale="0.5"：动画结束时，视图在 X 轴上的缩放比例为 0.5，即原始大小的一半。
+        android:fromYScale="1.0"：动画开始时，视图在 Y 轴上的缩放比例为 1.0，即原始大小。
+        android:toYScale="0.5"：动画结束时，视图在 Y 轴上的缩放比例为 0.5，即原始大小的一半。
+        android:pivotX="50%"：缩放动画在 X 轴上的中心点为视图的中心点（即 50% 的位置）。
+        android:pivotY="50%"：缩放动画在 Y 轴上的中心点为视图的中心点（即 50% 的位置）。 -->
+    <scale
+        android:fromXScale="0.0"
+        android:toXScale="1.0"
+        android:fromYScale="0.0"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+
+    <!--android:fromDegrees：动画开始时视图的旋转角度。取值范围为 0 到 360 度。
+        android:toDegrees：动画结束时视图的旋转角度。取值范围为 0 到 360 度。
+        android:pivotX：旋转中心点在 X 轴上的位置。可以使用绝对值（如 100）或相对值（如 50%）。
+        android:pivotY：旋转中心点在 Y 轴上的位置。可以使用绝对值（如 100）或相对值（如 50%）。
+        android:duration：动画的持续时间，以毫秒为单位。例如，android:duration="1000" 表示动画持续 1 秒。
+        android:startOffset：动画开始前的延迟时间，以毫秒为单位。例如，android:startOffset="500" 表示动画在 500 毫秒后开始。
+        android:interpolator：动画的插值器，用于控制动画的速度变化。可以使用预定义的插值器（如 @android:anim/accelerate_interpolator）或自定义插值器。
+        android:repeatCount：动画的重复次数。可以设置为整数或 infinite（无限重复）。
+        android:repeatMode：动画的重复模式。可以设置为 restart（重新开始）或 reverse（反向播放）。 -->
+<!--    <rotate-->
+<!--        android:fromDegrees="0"-->
+<!--        android:toDegrees="360"-->
+<!--        android:pivotX="50%"-->
+<!--        android:pivotY="50%" />-->
+</set>

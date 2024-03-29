@@ -1,4 +1,4 @@
-package com.xbing.app.db.facede;
+package com.xbing.app.db.custom.facede;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;

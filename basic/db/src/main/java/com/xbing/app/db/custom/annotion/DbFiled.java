@@ -1,4 +1,4 @@
-package com.xbing.app.db.annotion;
+package com.xbing.app.db.custom.annotion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
